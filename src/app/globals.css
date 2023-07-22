@@ -1,0 +1,33 @@
+@import "../css/fonts.css";
+@import "../css/customScroll.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media (min-width: 414px) {
+    .xs\:max-w-xxs {
+        max-width: 16rem;
+    }
+}
+
+@media (min-width: 464px) {
+    .xs\:max-w-xxs {
+        max-width: 18rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .\33xl\:mt-96 {
+        margin-top: 24rem !important;
+    }
+
+    .\33xl\:-right-48 {
+        right: -12rem !important;
+    }
+}
+
+.bg-grad {
+    background: linear-gradient(180deg, rgba(176, 198, 255, 0.00) 0%, #B0C6FF 47.79%);
+}
