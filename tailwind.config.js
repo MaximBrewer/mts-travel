@@ -16,6 +16,7 @@ export default {
         lg: "1024px",
         xl: "1280px",
         // "2xl": "1536px",
+        // tall: { raw: '(min-height: 800px)' },
       },
       padding: {
         DEFAULT: '1.5rem',
@@ -26,6 +27,10 @@ export default {
       },
     },
     extend: {
+      screens: {
+        tall: { raw: '(min-height: 800px)' },
+        // => @media (min-height: 800px) { ... }
+      },
       fontFamily: {
         sans: ['MTSWide', ...defaultTheme.fontFamily.sans],
       },

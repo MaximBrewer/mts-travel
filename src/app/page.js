@@ -29,246 +29,25 @@ import Photos from "../images/photos.png"
 import MPhotos from "../images/mphotos.png"
 import Girls from "../images/girls.jpg"
 
-import SochiM0I0Icon from "../images/routes/sochi/m0/i0/icon.svg"
-import SochiM0I0Image from "../images/routes/sochi/m0/i0/image.png"
-import SochiM0I1Icon from "../images/routes/sochi/m0/i1/icon.svg"
-import SochiM0I1Image from "../images/routes/sochi/m0/i1/image.png"
-import SochiM0I2Icon from "../images/routes/sochi/m0/i2/icon.svg"
-import SochiM0I2Image from "../images/routes/sochi/m0/i2/image.png"
-
-import SochiM1I0Icon from "../images/routes/sochi/m1/i0/icon.svg"
-import SochiM1I0Image from "../images/routes/sochi/m1/i0/image.png"
-import SochiM1I1Icon from "../images/routes/sochi/m1/i1/icon.svg"
-import SochiM1I1Image from "../images/routes/sochi/m1/i1/image.png"
-import SochiM1I2Icon from "../images/routes/sochi/m1/i2/icon.svg"
-import SochiM1I2Image from "../images/routes/sochi/m1/i2/image.png"
-
-import SochiM2I0Icon from "../images/routes/sochi/m2/i0/icon.svg"
-import SochiM2I0Image from "../images/routes/sochi/m2/i0/image.png"
-import SochiM2I1Icon from "../images/routes/sochi/m2/i1/icon.svg"
-import SochiM2I1Image from "../images/routes/sochi/m2/i1/image.png"
-import SochiM2I2Icon from "../images/routes/sochi/m2/i2/icon.svg"
-import SochiM2I2Image from "../images/routes/sochi/m2/i2/image.png"
-
-import SpbM0I0Icon from "../images/routes/sbp/m0/i0/icon.svg"
-import SpbM0I0Image from "../images/routes/sbp/m0/i0/image.png"
-import SpbM0I1Icon from "../images/routes/sbp/m0/i1/icon.svg"
-import SpbM0I1Image from "../images/routes/sbp/m0/i1/image.png"
-import SpbM0I2Icon from "../images/routes/sbp/m0/i2/icon.svg"
-import SpbM0I2Image from "../images/routes/sbp/m0/i2/image.png"
-
-import SpbM1I0Icon from "../images/routes/sbp/m1/i0/icon.svg"
-import SpbM1I0Image from "../images/routes/sbp/m1/i0/image.png"
-import SpbM1I1Icon from "../images/routes/sbp/m1/i1/icon.svg"
-import SpbM1I1Image from "../images/routes/sbp/m1/i1/image.png"
-import SpbM1I2Icon from "../images/routes/sbp/m1/i2/icon.svg"
-import SpbM1I2Image from "../images/routes/sbp/m1/i2/image.png"
-
-import SpbM2I0Icon from "../images/routes/sbp/m2/i0/icon.svg"
-import SpbM2I0Image from "../images/routes/sbp/m2/i0/image.png"
-import SpbM2I1Icon from "../images/routes/sbp/m2/i1/icon.svg"
-import SpbM2I1Image from "../images/routes/sbp/m2/i1/image.png"
-import SpbM2I2Icon from "../images/routes/sbp/m2/i2/icon.svg"
-import SpbM2I2Image from "../images/routes/sbp/m2/i2/image.png"
-
 import { useEffect, useRef, useState } from 'react';
-
-const routes = {
-    sochi: [
-        {
-            title: `Южный агротуризм: чайные плантации и обед на ферме за один день`,
-            text: `Если в горах Красной Поляны вы уже побывали, а море и пляж уже поднадоели, то в Сочи можно отправиться в освежающие горные леса. И нет, они не будут иметь никакого отношения к горам Красной Поляны.`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Начните свое путешествие комфортно: мы подобрали несколько отелей, из которых удобно будет начать наш маршрут.`,
-                    icon: SochiM0I0Icon.src,
-                    image: SochiM0I0Image.src
-                },
-                {
-                    title: `Чайные плантации`,
-                    text: `Насладитесь спокойным утром на зелёных чайных террасах , которые тянутся до самого горизонта и ничуть не уступают видами легендарному острову Цейлон.`,
-                    icon: SochiM0I1Icon.src,
-                    image: SochiM0I1Image.src
-                },
-                {
-                    title: `Обед на ферме`,
-                    text: `На высоте 400 метров над уровнем моря вас ждет отличный фермерский обед из органических продуктов, выращенных здесь же.`,
-                    icon: SochiM0I2Icon.src,
-                    image: SochiM0I2Image.src
-                }
-            ]
-
-        },
-        {
-            title: `На выходные в горы`,
-            text: `Посвятите горам Красной Поляны, таким высоким и могущественным, целый уикенд. Когда устанете от суеты морского побережья или просто захотите почувствовать прохладу в летний зной, смело берите машину BelkaCar на несколько дней и направляйтесь к подножию хребта Аибга.`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Мы сделали подборку отелей в Адлере, где можно комфортно переночевать и начать путешествие на каршеринге.`,
-                    icon: SochiM1I0Icon.src,
-                    image: SochiM1I0Image.src
-                },
-                {
-                    title: `Аттракционы в ущелье`,
-                    text: `Сюда едут не только за красивыми видами, но и за адреналином — место славится своими высотными аттракционами. Попробуйте прыгнуть в пропасть с банджи или прокатиться на огромных качелях через все ущелье.`,
-                    icon: SochiM1I1Icon.src,
-                    image: SochiM1I1Image.src
-                },
-                {
-                    title: `Водопад`,
-                    text: `В маршруте будет несколько водопадов, один из них достигает 70 метров высоты. Отдельное удовольствие — сама прогулка к нему по горной извилистой дороге сквозь буковый лес.`,
-                    icon: SochiM1I2Icon.src,
-                    image: SochiM1I2Image.src
-                }
-            ]
-        },
-        {
-            title: `Голубая река, белые берега — заповедники и природные парки Сочи за один день`,
-            text: `В этом маршруте собраны лучшие локации для агротуризма (и не только), чтобы вы переключились от мирской и туристической суеты на что-то прекрасное. Длительность маршрута — один день.`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Мы нашли несколько отелей в центре Сочи, расположенных в шаговой доступности от главных достопримечательностей. Но главное, оттуда удобно начинать маршрут.`,
-                    icon: SochiM2I0Icon.src,
-                    image: SochiM2I0Image.src
-                },
-                {
-                    title: `Реликтовый лес`,
-                    text: `Прогуляйтесь по сказочному лесу: папоротниково-лиановый пейзаж дополняют тропические грибы-цветы, скалы, разломы и бирюзово-синяя вода горной реки.`,
-                    icon: SochiM2I1Icon.src,
-                    image: SochiM2I1Image.src
-                },
-                {
-                    title: `Белый каньон`,
-                    text: `Здесь вас ждет невероятное сочетание чистейшей голубой воды и белых скал — цвета просто фантастические. Не забудьте сделать классные фото на память.`,
-                    icon: SochiM2I2Icon.src,
-                    image: SochiM2I2Image.src
-                }
-            ]
-        },
-    ],
-    spb: [
-        {
-            title: `Любуемся Невой с разных сторон. Главные смотровые площадки за два дня`,
-            text: `Такой Неву ты еще не видел. Мы нашли точки, где ты откроешь не только панораму на водную гладь и мосты, но и исторические памятники. «Невский пятачок», крепость с милым названием Орешек — слышал ли ты о таких? А ведь это одни из самых впечатляющих мест, до которых легко добраться на каршеринге BelkaCar.`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Перед большим путешествием надо как следует отдохнуть. Поэтому мы нашли несколько отелей, где можно расслабиться. А еще оттуда удобно начинать маршрут.`,
-                    icon: SpbM0I0Icon.src,
-                    image: SpbM0I0Image.src
-                },
-                {
-                    title: `Стрелка двух рек`,
-                    text: `Ты увидишь, как река Нева сливается с Ижорой, и темно-синяя вода приобретает более коричневый оттенок. Ну не волшебство ли?`,
-                    icon: SpbM0I1Icon.src,
-                    image: SpbM0I1Image.src
-                },
-                {
-                    title: `Ореховый остров`,
-                    text: `На Ореховом острове вы увидите, как исторические события влияли на древнюю крепость и оставляли следы. Например, там до сих пор есть вмятины от пуль и снарядов.`,
-                    icon: SpbM0I2Icon.src,
-                    image: SpbM0I2Image.src
-                }
-            ]
-        },
-        {
-            title: `Нескучные дачи: от «Амстердама» до древних пещер за два дня`,
-            text: `А поехали на дачу? Нет-нет, не копать грядки, а просто в гости. Посмотрим, как раньше жили известные купцы, деятели искусств и герои книг, увидим заброшенный замок. А потом отправимся в прошлое и посетим лабиринты пещер, где раньше добывали кварц для императорского двора.`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Мы подготовили отели, расположенные близко к выезду в сторону Гатчины, чтобы путешествие началось без пробок.`,
-                    icon: SpbM1I0Icon.src,
-                    image: SpbM1I0Image.src
-                },
-                {
-                    title: `Музей в Выре`,
-                    text: `Один из лучших региональных музеев, где можно взять интерактивную экскурсию и получить чин. И не беспокойтесь, вспоминать школьную программу не придется — все подробно расскажут.`,
-                    icon: SpbM1I1Icon.src,
-                    image: SpbM1I1Image.src
-                },
-                {
-                    title: `Усадьба писателя`,
-                    text: `Место, где граф Толстой написал «Князь Серебряный», а в самой деревне с забавным названием Пустынька можно увидеть графский грот и посетить «литературную» туристическую тропу.`,
-                    icon: SpbM1I2Icon.src,
-                    image: SpbM1I2Image.src
-                }
-            ]
-        },
-        {
-            title: `Открывая Карелию: вокруг Ладоги за два дня`,
-            text: `Поездка в Карелию — идеальный вариант на уик-энд. Там все, что нужно для путешественника: виды на озеро, хорошие дороги, комфортное жилье и кафе, где вкусно кормят. А сама Ладога — это место с невероятным количеством уникальных памятников природы!`,
-            link: "/pdf/sochi1.pdf",
-            items: [
-                {
-                    title: `Отель`,
-                    text: `Мы нашли места, где будет удобно переночевать перед большим путешествием, а с утра — позавтракать и удобно выехать. Никаких пробок по Мурманскому шоссе.`,
-                    icon: SpbM2I0Icon.src,
-                    image: SpbM2I0Image.src
-                },
-                {
-                    title: `Маяки-близнецы`,
-                    text: `Панорама на извилистую реку возле чугунного Белого маяка открывает вполне кинематографичные виды. С этой площадки виден и его «близнец» — Красный маяк. Отличное место для классных фото.`,
-                    icon: SpbM2I1Icon.src,
-                    image: SpbM2I1Image.src
-                },
-                {
-                    title: `Заброшенная ж/д`,
-                    text: `Место, где в суровых скалах был пробурен живописный железнодорожный тоннель. Говорят, там прятали финский бронепоезд во время Второй мировой. Самое время посмотреть, пока здесь не пустили скоростные поезда!`,
-                    icon: SpbM2I2Icon.src,
-                    image: SpbM2I2Image.src
-                }
-            ]
-        }
-    ]
-}
-
-const questions = {
-    sochi: [{
-        question: `Как ты любишь отдыхать?`,
-        answers: [
-            { img: SochiM0I1Image.src, text: `Гулять в природных заповедниках`, routeIndex: 0 },
-            { img: SochiM1I1Image.src, text: `Наслаждаться видами на горы`, routeIndex: 1 },
-            { img: SochiM2I1Image.src, text: `Пробовать продукты с местных ферм`, routeIndex: 2 },
-        ]
-    }],
-    spb: [{
-        question: `Как ты любишь отдыхать?`,
-        answers: [
-            { img: SpbM0I1Image.src, text: `Гулять у реки и наслаждаться видами`, routeIndex: 0 },
-            { img: SpbM2I1Image.src, text: `За городом на дачах`, routeIndex: 1 },
-            { img: SpbM2I1Image.src, text: `Знакомиться с культурой разных народов`, routeIndex: 2 },
-        ]
-    }]
-}
 
 
 const Filter = (props) => {
 
-    const { city, setAnswers, answers } = props
+    const { city, setAnswers, answers, findex, setFindex } = props
 
-    const [index, setIndex] = useState(0)
-
-    return questions[city.code][index] ? <div className="container mx-auto">
+    return questions[city.code][findex] ? <div className="container mx-auto">
         <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
-            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{questions[city.code][index].question}</h4>
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-8">
-                {questions[city.code][index].answers.map((item, idx) => <a key={idx} href="#" onClick={e => {
+            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{questions[city.code][findex].question}</h4>
+            <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
+                {questions[city.code][findex].answers.map((item, idx) => <a key={idx} href="#" onClick={e => {
                     setAnswers(prev => {
                         let arr = prev.slice()
                         arr.push(idx)
                         return arr
                     })
-                    setIndex(prev => ++prev)
-                }} className="h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                    setFindex(prev => ++prev)
+                }} className="xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
                     <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
                 </a>)}
             </div>
@@ -290,6 +69,8 @@ export default function Welcome(props) {
 
     const [answers, setAnswers] = useState([]);
 
+    const [findex, setFindex] = useState(0)
+
     const [route, setRoute] = useState(null);
 
     const citiesRef = useRef(null)
@@ -308,17 +89,20 @@ export default function Welcome(props) {
     }
 
     useEffect(() => {
-        console.log(route)
+        setFindex(0)
+        setAnswers([])
         if (route) {
             setAnswers([]);
             setCity(null)
             setTimeout(() => {
                 smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 32 });
-            }, 10)
+            }, 50)
         }
     }, [route])
 
     useEffect(() => {
+        setFindex(0)
+        setAnswers([])
         if (city && answers.length) {
             if (questions[city.code] && questions[city.code].length <= answers.length) {
                 setRoute(routes[city.code][answers[0]])
@@ -343,14 +127,19 @@ export default function Welcome(props) {
                         <div className="relative">
                             <div className={`w-screen overflow-hidden`}>
                                 <div className="relative">
-                                    <div className={`bg-cover xl:h-screen xl:flex xl:flex-col xl:justify-between xl:items-center`} style={{ backgroundImage: `url('${Clouds}')` }}>
-                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative xl:py-6`}>
-                                            <a href="#" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
-                                            <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10 mb-12`}>
-                                                <MtcLogo className="w-[136px] xl:w-[174px] h-auto" />
-                                                <div className={`h-12 w-px border-l border-black`}></div>
-                                                <BelkaCarLogo className="w-[112px] xl:w-[148px] h-auto" />
+                                    <div className={`bg-cover xl:h-screen xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center`} style={{ backgroundImage: `url('${Clouds.src}')` }}>
+                                        <div className="w-full xl:mb-20">
+                                            <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative xl:py-6`}>
+                                                <a href="#" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
+                                                <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
+                                                    <MtcLogo className="w-[136px] xl:w-[174px] h-auto" />
+                                                    <div className={`h-12 w-px border-l border-black`}></div>
+                                                    <BelkaCarLogo className="w-[112px] xl:w-[148px] h-auto" />
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative xl:py-6`}>
+
                                             <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-4 xl:mb-[4vh] leading-none">
                                                 <Heart className="w-[58px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
                                                 <span>Приключения<br />включены</span>
@@ -358,11 +147,11 @@ export default function Welcome(props) {
                                             <img src={ImagesGroup.src} alt={``} className={`shrink-0 w-[16rem] sm:w-[346px] xs:w-auto mb-4 xl:mb-10`} />
                                             <div className="px-4 xl:px-0 text-center text-[24px] leading-tight font-medium max-w-lg xl:max-w-4xl">Отель, каршеринг, маршрут — все готово.<br />Не&nbsp;хватает только тебя.</div>
                                         </div>
-                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden xl:-mt-24 pt-12 xl:pt-24 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
+                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-12 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
                                             <button onClick={e => {
                                                 smooth.current.scrollIntoView(citiesRef.current, { offsetTop: 32 });
                                             }} className={`w-[12rem] h-[3rem] xl:w-[20rem] xl:h-[4rem] relative pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1.125rem] xl:text-[1.5rem] text-white`}>го!</button>
-                                            <div className={`w-full xl:w-[1920px] h-[26.5rem] relative -top-8 -mt-36`}>
+                                            <div className={`w-full xl:w-[1920px] h-[26.5rem] relative -top-8 -mt-36 tall:-mt-16`}>
                                                 <div className={`hidden xl:block absolute rotate-[11.518deg] w-[14.84%] left-[33.7%] top-[58.88%]`}>
                                                     <img src={Photo3.src} alt={``} className="w-full" style={scale} />
                                                 </div>
@@ -387,13 +176,13 @@ export default function Welcome(props) {
                                                 <div className={`hidden xl:block absolute w-[15.71%] left-[63.7%] rotate-[-11.774deg] top-[41.12%]`}>
                                                     <img src={Photo6.src} alt={``} className="w-full" style={scale} />
                                                 </div>
-                                                <div className="container mx-auto relative z-10 text-right mt-72 pr-6 xl:mt-80 3xl:mt-96">
-                                                    <div className="text-white font-medium text-shadow drop-shadow relative 3xl:-right-48">*Путешествия</div>
+                                                <div className="container mx-auto relative z-10 text-right mt-72 pr-6 xl:mt-80">
+                                                    <div className="text-white font-medium text-shadow drop-shadow relative xl:-right-[2vw]">*Путешествия</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-full xl:overflow-hidden -mt-32 xl:-mt-24">
+                                    <div className="w-full xl:overflow-hidden -mt-32 xl:-mt-12">
                                         <div className={`bg-gradient-to-t from-indigo-300 to-blue-100 xl:mb-20 px-4 xl:px-8 relative z-20 mt-32 xl:mt-24`}>
                                             <div className='h-px'></div>
                                             <div className="max-w-lg xl:container mx-auto relative">
@@ -439,47 +228,54 @@ export default function Welcome(props) {
                                                 </svg>
                                             </a>
                                         </div>
-                                        <div className="relative mb-24 max-w-lg xl:max-w-[1920px] min-h-screen mx-auto px-4 xl:px-8 z-10">
+                                        <div className="relative mb-12 max-w-lg xl:max-w-[1920px] mx-auto px-4 xl:px-8 z-10 min-h-[480px]">
                                             <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex">
-                                                <svg width="1533" height="1828" className="max-w-none absolute -mt-16 -ml-[2rem]" viewBox="0 0 1533 1828" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1516.12 1622.41C1057.32 1231 1596.23 605.546 1205.4 566.191C841.611 529.56 523.049 1230.68 276.421 1034.86C12.5435 825.334 547.023 669.913 17.3608 204.818" stroke="#F4FF70" strokeWidth="33.3128" strokeMiterlimit="11.4737" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M1516.12 1622.41C1057.32 1231 1596.23 605.546 1205.4 566.191C841.611 529.56 523.049 1230.68 276.421 1034.86C12.5435 825.334 547.023 669.913 17.3608 204.818" stroke="black" strokeWidth="1.99877" strokeMiterlimit="11.4737" strokeLinecap="round" strokeLinejoin="round" stroke-dasharray="13.33 13.33" />
+                                                <svg width="3060" height="2722" className="max-w-none absolute mt-[20rem] -ml-[24rem] -rotate-[2deg]" viewBox="0 0 3060 2722" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="#F4FF70" stroke-width="33.3589" stroke-miterlimit="11.4737" stroke-linejoin="round" />
+                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="black" stroke-width="2.00154" stroke-miterlimit="11.4737" stroke-linejoin="round" stroke-dasharray="10.01 10.01" />
                                                 </svg>
+
                                             </div>
                                             {!city ? <div className="container mx-auto">
                                                 <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
                                                     <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">В каком городе <br />ты хочешь исследовать новые места?</h4>
-                                                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-5 gap-y-8">
-                                                        {[{
-                                                            code: `sochi`,
-                                                            text: `Сочи`,
-                                                            img: Sochi.src
-                                                        }, {
-                                                            code: `kazan`,
-                                                            text: `Казань`,
-                                                            img: Kazan.src
-                                                        }, {
-                                                            code: `spb`,
-                                                            text: `Санкт-Петербург`,
-                                                            img: Spb.src
-                                                        }, {
-                                                            code: `kalinin`,
-                                                            text: `Калининград`,
-                                                            img: Kalin.src
-                                                        }].map((item, index) => <a key={index} href="#" onClick={e => {
+                                                    <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
+                                                        {[
+                                                            {
+
+                                                                code: `sochi`,
+                                                                text: `Сочи`,
+                                                                img: Sochi.src
+                                                            },
+                                                            //{
+                                                            //     code: `kazan`,
+                                                            //     text: `Казань`,
+                                                            //     img: Kazan.src
+                                                            // }, 
+                                                            {
+                                                                code: `spb`,
+                                                                text: `Санкт-Петербург`,
+                                                                img: Spb.src
+                                                            },
+                                                            // {
+                                                            //     code: `kalinin`,
+                                                            //     text: `Калининград`,
+                                                            //     img: Kalin.src
+                                                            // }
+                                                        ].map((item, index) => <a key={index} href="#" onClick={e => {
                                                             setCity(item)
-                                                        }} className="h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                                                        }} className="xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
                                                             <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
                                                         </a>)}
                                                     </div>
                                                 </div>
-                                            </div> : <Filter city={city} setAnswers={setAnswers} />}
+                                            </div> : <Filter city={city} setAnswers={setAnswers} findex={findex} setFindex={setFindex} />}
                                         </div>
                                     </div>
                                     {route ? <div className="w-full relative z-50 mt-16 sm:mt-0" ref={resultsRef}>
                                         <div className="relative container mx-auto">
                                             <div className="max-w-lg xl:max-w-none mx-auto mb-8 xl:mb-20 px-4 xl:px-8">
-                                                <h4 className="relative z-10 text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-12 xl:pt-0">Предлагаем отправиться по&nbsp;маршруту "{route.title}"</h4>
+                                                <h4 className="relative z-10 text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-12 xl:pt-0">Предлагаем отправиться по&nbsp;маршруту &laquo;{route.title}&raquo;</h4>
                                                 <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{route.text}</div>
                                                 <div className="relative z-10 border border-black rounded-[30px] flex flex-col items-center overflow-hidden">
                                                     <ul className="relative grid grid-cols-1 xl:grid-cols-3 w-full xl:pl-20 pt-24 xl:pt-0 -my-px -mx-px">
@@ -489,18 +285,18 @@ export default function Welcome(props) {
                                                                     <div className="shrink-0 w-10  h-10 flex items-center justify-center bg-rose-600 rounded-full border border-rose-600 mr-4 xl:mr-6">
                                                                         <div className="text-center text-white text-2xl font-light">{index + 1}</div>
                                                                     </div>
-                                                                    <div className="text-black text-xl font-bold overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</div>
+                                                                    <div className={`text-black text-xl font-bold ${index < 2 ? `pr-[56px]` : ``}`}>{item.title}</div>
                                                                 </div>
                                                                 <div className="flex items-center mb-2">
                                                                     <div className="shrink-0 w-10  h-10 flex items-center justify-center rounded-full border border-black mr-4">
                                                                         <img src={item.icon} className="w-5.5 h-5.5" alt="" />
                                                                     </div>
-                                                                    <div className="text-black text-xs xl:pr-12 xl:min-h-[4rem]">{item.text}</div>
+                                                                    <div className="text-black text-xs xl:pr-[56px] xl:min-h-[4rem]">{item.text}</div>
                                                                 </div>
                                                                 <div className="pb-6">
-                                                                    <div>
-                                                                        <img src={item.image} className="w-full h-auto" alt="" />
-                                                                    </div>
+                                                                    <div className="pt-[54%] rounded-2xl bg-cover bg-center" style={{
+                                                                        backgroundImage: `url('${item.image}')`
+                                                                    }} />
                                                                 </div>
                                                             </div>
                                                         </li>)}
@@ -535,12 +331,12 @@ export default function Welcome(props) {
                                         <div className="relative">
                                             <div className="relative z-10 container mx-auto">
                                                 <div className="max-w-lg xl:max-w-[82.5rem] mx-auto mb-40 px-4 xl:px-8">
-                                                    <div className="bg-white rounded-[30px] flex flex-col items-center px-4 pt-12 pb-[16rem] xl:pb-[20rem] bg-bottom bg-contain bg-no-repeat relative">
+                                                    <div className="bg-white rounded-[30px] flex flex-col items-center px-4 pt-12 pb-[16rem] bg-bottom bg-contain bg-no-repeat relative">
                                                         <div className="absolute top-0 left-0 bottom-0 right-0 items-center justify-center hidden xl:flex">
-                                                            <img src={Road1} className="absolute max-w-none pointer-events-none ml-[14rem] mt-[68rem] -rotate-[1.57deg]" />
+                                                            <img src={Road1.src} className="absolute max-w-none pointer-events-none ml-[14rem] mt-[64rem] -rotate-[1.57deg]" />
                                                         </div>
                                                         <div className="absolute top-0 left-0 bottom-0 right-0 rounded-[30px] overflow-hidden">
-                                                            <img src={Photos} className="absolute w-full bottom-0 left-0 hidden xl:block" />
+                                                            <img src={Photos.src} className="absolute w-full bottom-0 left-0 hidden xl:block" />
                                                         </div>
 
                                                         <div className="flex items-end gap-2 sm:gap-6 mb-8">
@@ -583,21 +379,21 @@ export default function Welcome(props) {
 
                                                 </div>
                                                 <div className="absolute top-0 left-0 bottom-0 right-0 flex flex-col items-center justify-end block xl:hidden pointer-events-none">
-                                                    <img src={MPhotos} className="relative max-w-none z-10 w-[110%] sm:w-auto -top-8 sm:top-0" />
+                                                    <img src={MPhotos.src} className="relative max-w-none z-10 w-[110%] sm:w-auto -top-8 sm:top-0" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="relative mb-16 xl:mb-20 flex flex-col items-center justify-center max-w-lg mx-auto xl:max-w-none">
-                                            <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-20 max-w-4xl mx-auto">Новые места ближе с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
-                                            <div className={`relative rotate-[3deg] w-[48rem] -scale-x-100 mb-20 `}>
-                                                <div className="scale-[.85] sm:scale-[1]">
+                                            <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-12 xl:mb-4 max-w-4xl mx-auto">Новые места ближе <br />с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
+                                            <div className={`relative rotate-[3deg] w-[48rem] -scale-x-100 mb-12 xl:mb-4`}>
+                                                <div className="scale-[.75] sm:scale-[1] xl:scale-[1.2]">
                                                     <img src={Girls.src} alt={``} className="w-full" style={scale2} />
                                                 </div>
                                             </div>
                                             <button onClick={e => {
                                                 smooth.current.scrollIntoView(citiesRef.current, { offsetTop: 32 });
-                                            }} className="relative flex items-center gap-4 hover:scale-105 transition duration-500 rounded-[30px] border border-black px-6 xl:px-12 py-4 xl:py-6 font-medium text-[16px] xl:text-[22px]">
-                                                <svg className="w-3 xl:w-[18px] h-auto" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            }} className="relative flex items-center gap-4 hover:scale-105 transition duration-500 rounded-full border border-black px-6 xl:px-10 py-4 xl:py-5 font-medium text-[16px] xl:text-[22px]">
+                                                <svg className="w-2.5 xl:w-4 h-auto" viewBox="0 0 18 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M17 0.519043L1 17.0001L17 33.4811" stroke="black" />
                                                 </svg>
                                                 <div>
@@ -605,13 +401,14 @@ export default function Welcome(props) {
                                                 </div>
                                             </button>
                                         </div>
-                                        <div className="flex flex-col items-center pb-16">
-                                            <div className={`flex items-center space-x-4 xl:space-x-10 mb-8 xl:mb-16`}>
+                                        <div className="flex flex-col items-center pb-16 xl:pb-0 relative">
+                                            <div className="text-black opacity-50 font-medium text-shadow drop-shadow absolute bottom-6 right-6">*Путешествия</div>
+                                            <div className={`flex items-center space-x-4 xl:space-x-10 mb-8`}>
                                                 <MtcLogo className="w-[163px] h-auto" />
                                                 <div className={`h-16 w-px border-l border-black`}></div>
                                                 <BelkaCarLogo className="w-[142px] h-auto" />
                                             </div>
-                                            <a href="#" className="text-stone-900 text-sm font-normal underline xl:hidden">Правила</a>
+                                            <a href="#" className="text-stone-900 text-sm font-normal underline mb-8">Правила</a>
                                         </div>
                                     </div> : ``}
                                 </div>
