@@ -36,11 +36,11 @@ const Filter = (props) => {
 
     const { city, setAnswers, answers, findex, setFindex } = props
 
-    return questions[city.code][findex] ? <div className="container mx-auto">
+    return window.questions[city.code][findex] ? <div className="container mx-auto">
         <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
-            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{questions[city.code][findex].question}</h4>
+            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{window.questions[city.code][findex].question}</h4>
             <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
-                {questions[city.code][findex].answers.map((item, idx) => <a key={idx} href="#" onClick={e => {
+                {window.questions[city.code][findex].answers.map((item, idx) => <a key={idx} href="#" onClick={e => {
                     setAnswers(prev => {
                         let arr = prev.slice()
                         arr.push(idx)
@@ -77,15 +77,21 @@ export default function Welcome(props) {
 
     const resultsRef = useRef(null)
 
+    const pageRef = useRef(null)
+
     const smooth = useRef(null)
 
     const scroll = (e) => {
-        setScale({
-            transform: `scale(${(100 + e.offset.y / 50) / 100})`
-        })
-        setScale2({
-            transform: window.innerHeight > 1280 ? `scale(${(100 + (e.offset.y - window.innerHeight * 3.5) / 50) / 100})` : `scale(${(100 + (e.offset.y - window.innerHeight * 6) / 50) / 100})`
-        })
+        if (pageRef.current) {
+            let wh = pageRef.current.offsetHeight - window.innerHeight;
+            console.log(wh, e.offset.y)
+            setScale({
+                transform: `scale(${(100 + e.offset.y / 50) / 100})`
+            })
+            setScale2({
+                transform: `scale(${e.offset.y / wh})`
+            })
+        }
     }
 
     useEffect(() => {
@@ -95,17 +101,16 @@ export default function Welcome(props) {
             setAnswers([]);
             setCity(null)
             setTimeout(() => {
-                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 32 });
+                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 84 });
             }, 50)
         }
     }, [route])
 
     useEffect(() => {
         setFindex(0)
-        setAnswers([])
         if (city && answers.length) {
-            if (questions[city.code] && questions[city.code].length <= answers.length) {
-                setRoute(routes[city.code][answers[0]])
+            if (window.questions[city.code] && window.questions[city.code].length <= answers.length) {
+                setRoute(window.routes[city.code][answers[0]])
             }
         }
     }, [answers, city])
@@ -114,6 +119,16 @@ export default function Welcome(props) {
         <>
             <div className="bg-indigo-300 bg-cover bg-top">
                 <div className={`h-screen w-screen overflow-hidden`}>
+                    <div className="w-full fixed w-full top-0 z-50 bg-cover bg-top backdrop-blur bg-opacity-50" style={{ backgroundImage: `url('${Clouds.src}')` }}>
+                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-3 xl:py-6`}>
+                            <a href="/pdf/rules.pdf" target="_blank" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
+                            <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
+                                <MtcLogo className="w-[136px] xl:w-[174px] h-auto" />
+                                <div className={`h-12 w-px border-l border-black`}></div>
+                                <BelkaCarLogo className="w-[112px] xl:w-[148px] h-auto" />
+                            </div>
+                        </div>
+                    </div>
                     <Scrollbar
                         ref={smooth}
                         damping={0.1}
@@ -125,20 +140,10 @@ export default function Welcome(props) {
                         onScroll={scroll}
                     >
                         <div className="relative">
-                            <div className={`w-screen overflow-hidden`}>
+                            <div className={`w-screen overflow-hidden`} ref={pageRef}>
                                 <div className="relative">
-                                    <div className={`bg-cover xl:h-screen xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center`} style={{ backgroundImage: `url('${Clouds.src}')` }}>
-                                        <div className="w-full xl:mb-20">
-                                            <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative xl:py-6`}>
-                                                <a href="#" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
-                                                <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
-                                                    <MtcLogo className="w-[136px] xl:w-[174px] h-auto" />
-                                                    <div className={`h-12 w-px border-l border-black`}></div>
-                                                    <BelkaCarLogo className="w-[112px] xl:w-[148px] h-auto" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative xl:py-6`}>
+                                    <div className={`bg-cover bg-top xl:h-screen xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center pt-[72px] xl:pt-[102px]`}  style={{ backgroundImage: `url('${Clouds.src}')` }}>
+                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-10`}>
 
                                             <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-4 xl:mb-[4vh] leading-none">
                                                 <Heart className="w-[58px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
@@ -149,7 +154,7 @@ export default function Welcome(props) {
                                         </div>
                                         <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-12 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
                                             <button onClick={e => {
-                                                smooth.current.scrollIntoView(citiesRef.current, { offsetTop: 32 });
+                                                smooth.current.scrollIntoView(citiesRef.current, { block: "start", offsetTop: 84 });
                                             }} className={`w-[12rem] h-[3rem] xl:w-[20rem] xl:h-[4rem] relative pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1.125rem] xl:text-[1.5rem] text-white`}>го!</button>
                                             <div className={`w-full xl:w-[1920px] h-[26.5rem] relative -top-8 -mt-36 tall:-mt-16`}>
                                                 <div className={`hidden xl:block absolute rotate-[11.518deg] w-[14.84%] left-[33.7%] top-[58.88%]`}>
@@ -183,7 +188,7 @@ export default function Welcome(props) {
                                         </div>
                                     </div>
                                     <div className="w-full xl:overflow-hidden -mt-32 xl:-mt-12">
-                                        <div className={`bg-gradient-to-t from-indigo-300 to-blue-100 xl:mb-20 px-4 xl:px-8 relative z-20 mt-32 xl:mt-24`}>
+                                        <div className={`bg-gradient-to-t from-indigo-300 to-blue-100 xl:mb-20 px-4 xl:px-8 relative z-20 mt-32 xl:mt-12`}>
                                             <div className='h-px'></div>
                                             <div className="max-w-lg xl:container mx-auto relative">
                                                 <div className="absolute top-0 left-0 bottom-0 right-0 pointer-events-none">
@@ -191,7 +196,7 @@ export default function Welcome(props) {
                                                     <img src={Roadm2.src} className="absolute max-w-none -bottom-[0.6rem] -left-[25.5rem] xl:hidden" />
                                                     <img src={Roadm3.src} className="absolute max-w-none -bottom-[87rem] -left-[2.8rem] xl:hidden" />
                                                 </div>
-                                                <div className="bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-24">
+                                                <div className="bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
                                                     <img src={LR1.src} className="absolute max-w-none pointer-events-nones top-[1.52rem] -right-[10.75rem] xl:hidden" />
                                                     <img src={LL1.src} className="absolute max-w-none pointer-events-nones -bottom-[0rem] -left-[2.375rem] xl:hidden" />
                                                     <div className="relative flex flex-col pt-12 items-center">
@@ -231,8 +236,8 @@ export default function Welcome(props) {
                                         <div className="relative mb-12 max-w-lg xl:max-w-[1920px] mx-auto px-4 xl:px-8 z-10 min-h-[480px]">
                                             <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex">
                                                 <svg width="3060" height="2722" className="max-w-none absolute mt-[20rem] -ml-[24rem] -rotate-[2deg]" viewBox="0 0 3060 2722" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="#F4FF70" stroke-width="33.3589" stroke-miterlimit="11.4737" stroke-linejoin="round" />
-                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="black" stroke-width="2.00154" stroke-miterlimit="11.4737" stroke-linejoin="round" stroke-dasharray="10.01 10.01" />
+                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="#F4FF70" strokeWidth="33.3589" strokeMiterlimit="11.4737" strokeLinejoin="round" />
+                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="black" strokeWidth="2.00154" strokeMiterlimit="11.4737" strokeLinejoin="round" strokeDasharray="10.01 10.01" />
                                                 </svg>
 
                                             </div>
@@ -386,7 +391,7 @@ export default function Welcome(props) {
                                         <div className="relative mb-16 xl:mb-20 flex flex-col items-center justify-center max-w-lg mx-auto xl:max-w-none">
                                             <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-12 xl:mb-4 max-w-4xl mx-auto">Новые места ближе <br />с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
                                             <div className={`relative rotate-[3deg] w-[48rem] -scale-x-100 mb-12 xl:mb-4`}>
-                                                <div className="scale-[.75] sm:scale-[1] xl:scale-[1.2]">
+                                                <div className="scale-[.75] sm:scale-[.9]">
                                                     <img src={Girls.src} alt={``} className="w-full" style={scale2} />
                                                 </div>
                                             </div>
@@ -408,7 +413,7 @@ export default function Welcome(props) {
                                                 <div className={`h-16 w-px border-l border-black`}></div>
                                                 <BelkaCarLogo className="w-[142px] h-auto" />
                                             </div>
-                                            <a href="#" className="text-stone-900 text-sm font-normal underline mb-8">Правила</a>
+                                            <a href="/pdf/rules.pdf" target="_blank" className="text-stone-900 text-sm font-normal underline mb-8">Правила</a>
                                         </div>
                                     </div> : ``}
                                 </div>
