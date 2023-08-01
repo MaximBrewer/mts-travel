@@ -126,6 +126,10 @@ export default function Welcome(props) {
                 smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
                 setRoute(null)
                 setRoute(window.routes[city.code][answers[0]])
+                setTimeout(() => {
+                    setAnswers([]);
+                    setCity(null)
+                }, 200)
             }
         }
     }, [answers, city])
