@@ -28,19 +28,19 @@ window.routes = {
                     title: `Отель`,
                     text: `Мы нашли несколько отелей в центре Сочи, расположенных в шаговой доступности от главных достопримечательностей. Но главное, оттуда удобно начинать маршрут.`,
                     icon: `/routes/sochi/m2/i0/icon.svg`,
-                    image: `/routes/sochi/m2/i0/image.png`
+                    image: `/routes/sochi/m2/i0/image.jpg`
                 },
                 {
                     title: `Реликтовый лес`,
                     text: `Прогуляйтесь по сказочному лесу: папоротниково-лиановый пейзаж дополняют тропические грибы-цветы, скалы, разломы и бирюзово-синяя вода горной реки.`,
                     icon: `/routes/sochi/m2/i1/icon.svg`,
-                    image: `/routes/sochi/m2/i1/image.png`
+                    image: `/routes/sochi/m2/i1/image.jpg`
                 },
                 {
                     title: `Белый каньон`,
                     text: `Здесь вас ждет невероятное сочетание чистейшей голубой воды и белых скал — цвета просто фантастические. Не забудьте сделать классные фото на память.`,
                     icon: `/routes/sochi/m2/i2/icon.svg`,
-                    image: `/routes/sochi/m2/i2/image.png`
+                    image: `/routes/sochi/m2/i2/image.jpg`
                 }
             ]
         },
@@ -78,19 +78,19 @@ window.routes = {
                     title: `Отель`,
                     text: `Начните свое путешествие комфортно: мы подобрали несколько отелей, из которых удобно будет начать наш маршрут.`,
                     icon: `/routes/sochi/m0/i0/icon.svg`,
-                    image: `/routes/sochi/m0/i0/image.png`
+                    image: `/routes/sochi/m0/i0/image.jpg`
                 },
                 {
                     title: `Чайные плантации`,
                     text: `Насладитесь спокойным утром на зелёных чайных террасах , которые тянутся до самого горизонта и ничуть не уступают видами легендарному острову Цейлон.`,
                     icon: `/routes/sochi/m0/i1/icon.svg`,
-                    image: `/routes/sochi/m0/i1/image.png`
+                    image: `/routes/sochi/m0/i1/image.jpg`
                 },
                 {
                     title: `Обед на ферме`,
                     text: `На высоте 400 метров над уровнем моря вас ждет отличный фермерский обед из органических продуктов, выращенных здесь же.`,
                     icon: `/routes/sochi/m0/i2/icon.svg`,
-                    image: `/routes/sochi/m0/i2/image.png`
+                    image: `/routes/sochi/m0/i2/image.jpg`
                 }
             ]
 

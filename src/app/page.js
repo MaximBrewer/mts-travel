@@ -29,6 +29,9 @@ import Photos from "../images/photos.png"
 import MPhotos from "../images/mphotos.png"
 import Girls from "../images/girls.jpg"
 
+import RoadNew from "../images/nr.svg"
+import RoadNewMob from "../images/nrm.svg"
+
 import { useEffect, useRef, useState } from 'react';
 
 
@@ -81,10 +84,20 @@ export default function Welcome(props) {
 
     const smooth = useRef(null)
 
+    const headerRef = useRef(null)
+
     const scroll = (e) => {
+        if (e.offset.y > 100 && headerRef.current) {
+            headerRef.current.classList.add(`bg-indigo-300`);
+            headerRef.current.classList.add(`backdrop-blur`);
+            headerRef.current.classList.add(`bg-opacity-50`);
+        } else {
+            headerRef.current.classList.remove(`bg-indigo-300`);
+            headerRef.current.classList.remove(`backdrop-blur`);
+            headerRef.current.classList.remove(`bg-opacity-50`);
+        }
         if (pageRef.current) {
             let wh = pageRef.current.offsetHeight - window.innerHeight;
-            console.log(wh, e.offset.y)
             setScale({
                 transform: `scale(${(100 + e.offset.y / 50) / 100})`
             })
@@ -101,7 +114,7 @@ export default function Welcome(props) {
             setAnswers([]);
             setCity(null)
             setTimeout(() => {
-                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 84 });
+                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
             }, 50)
         }
     }, [route])
@@ -119,7 +132,7 @@ export default function Welcome(props) {
         <>
             <div className="bg-indigo-300 bg-cover bg-top">
                 <div className={`h-screen w-screen overflow-hidden`}>
-                    <div className="w-full fixed w-full top-0 z-50 bg-cover bg-top backdrop-blur bg-opacity-50" style={{ backgroundImage: `url('${Clouds.src}')` }}>
+                    <div className="w-full fixed w-full top-0 z-50 transition" ref={headerRef}>
                         <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-3 xl:py-6`}>
                             <a href="/pdf/rules.pdf" target="_blank" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
                             <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
@@ -142,9 +155,8 @@ export default function Welcome(props) {
                         <div className="relative">
                             <div className={`w-screen overflow-hidden`} ref={pageRef}>
                                 <div className="relative">
-                                    <div className={`bg-cover bg-top xl:h-screen xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center pt-[72px] xl:pt-[102px]`}  style={{ backgroundImage: `url('${Clouds.src}')` }}>
-                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-10`}>
-
+                                    <div className={`bg-cover bg-top xl:h-screen max-h-[1600px] xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center pt-[72px] xl:pt-[102px]`} style={{ backgroundImage: `url('${Clouds.src}')` }}>
+                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start xl:justify-center relative py-10`}>
                                             <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-4 xl:mb-[4vh] leading-none">
                                                 <Heart className="w-[58px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
                                                 <span>Приключения<br />включены</span>
@@ -191,14 +203,14 @@ export default function Welcome(props) {
                                         <div className={`bg-gradient-to-t from-indigo-300 to-blue-100 xl:mb-20 px-4 xl:px-8 relative z-20 mt-32 xl:mt-12`}>
                                             <div className='h-px'></div>
                                             <div className="max-w-lg xl:container mx-auto relative">
-                                                <div className="absolute top-0 left-0 bottom-0 right-0 pointer-events-none">
-                                                    <img src={Roadm1.src} className="absolute max-w-none -top-[8.05rem] -right-[43.7rem] xl:hidden" />
-                                                    <img src={Roadm2.src} className="absolute max-w-none -bottom-[0.6rem] -left-[25.5rem] xl:hidden" />
-                                                    <img src={Roadm3.src} className="absolute max-w-none -bottom-[87rem] -left-[2.8rem] xl:hidden" />
+                                                <div className="absolute top-0 left-0 bottom-0 right-0 pointer-events-nones">
+                                                    <img src={Roadm1.src} className="absolute max-w-none -top-[4.8rem] -right-[28.5rem] xl:hidden" />
+                                                    <img src={Roadm2.src} className="absolute max-w-none -bottom-[0.1rem] -left-[16.5rem] xl:hidden" />
+                                                    <img src={Roadm3.src} className="absolute max-w-none -rotate-[10deg] -bottom-[56rem] left-[1.1rem] xl:hidden" />
                                                 </div>
-                                                <div className="bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
-                                                    <img src={LR1.src} className="absolute max-w-none pointer-events-nones top-[1.52rem] -right-[10.75rem] xl:hidden" />
-                                                    <img src={LL1.src} className="absolute max-w-none pointer-events-nones -bottom-[0rem] -left-[2.375rem] xl:hidden" />
+                                                <div className="z-20 bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
+                                                    <img src={LR1.src} className="absolute max-w-none pointer-events-nones top-[1.52rem] -right-px xl:hidden" />
+                                                    <img src={LL1.src} className="absolute max-w-none pointer-events-nones -bottom-px -left-px xl:hidden" />
                                                     <div className="relative flex flex-col pt-12 items-center">
                                                         <div className="text-stone-900 text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-6">
                                                             <Pin className={`rotate-[-169.04deg] absolute w-8 h-auto xl:w-10 right-6 -top-11 xl:-top-14 z-10`} />
@@ -227,21 +239,17 @@ export default function Welcome(props) {
                                     <div className="w-full relative z-50 mt-16 sm:mt-0" ref={citiesRef}>
                                         <div className="flex flex-col items-center my-8">
                                             <div className="text-center text-black text-xl font-medium mb-2 xl:mb-6">Подобрать маршрут</div>
-                                            <a href="#" className="block hover:scale-125 transition duration-500">
+                                            <a href="#" className="block hover:scale-125 transition duration-500 mt-6 animate-bounce">
                                                 <svg className="w-6 xl:w-8 h-auto" viewBox="0 0 48 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M1 1L24 20L47 1" stroke="black" />
                                                 </svg>
                                             </a>
                                         </div>
                                         <div className="relative mb-12 max-w-lg xl:max-w-[1920px] mx-auto px-4 xl:px-8 z-10 min-h-[480px]">
-                                            <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex">
-                                                <svg width="3060" height="2722" className="max-w-none absolute mt-[20rem] -ml-[24rem] -rotate-[2deg]" viewBox="0 0 3060 2722" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="#F4FF70" strokeWidth="33.3589" strokeMiterlimit="11.4737" strokeLinejoin="round" />
-                                                    <path d="M17 3C46.8007 183.249 27.6749 439.669 310.559 414.65C512.252 396.811 736.553 298.172 955.752 490.651C1486.15 956.39 950.928 1112.03 1215.17 1321.84C1462.14 1517.94 1781.14 815.842 2145.43 852.524C2536.81 891.933 1997.15 1518.26 2456.58 1910.2C2574.66 1998.91 2722.68 2234.25 2370.14 2465.89C2299.42 2512.36 2182.48 2381.33 2087.92 2398.51C1942.81 2424.86 2093.93 2830.5 2456.58 2665.71C2870.76 2477.5 3041.32 2536.61 3057.33 2538.95" stroke="black" strokeWidth="2.00154" strokeMiterlimit="11.4737" strokeLinejoin="round" strokeDasharray="10.01 10.01" />
-                                                </svg>
-
+                                            <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex -rotate-[1.5deg]">
+                                                <img src={Road1.src} alt={``} className="max-w-none absolute mt-[78rem] ml-[1rem]" />
                                             </div>
-                                            {!city ? <div className="container mx-auto">
+                                            {!city ? <div className="container mx-auto relative z-10">
                                                 <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
                                                     <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">В каком городе <br />ты хочешь исследовать новые места?</h4>
                                                     <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
@@ -277,68 +285,65 @@ export default function Welcome(props) {
                                             </div> : <Filter city={city} setAnswers={setAnswers} findex={findex} setFindex={setFindex} />}
                                         </div>
                                     </div>
-                                    {route ? <div className="w-full relative z-50 mt-16 sm:mt-0" ref={resultsRef}>
+                                    {route ? <div className="w-full relative z-40 mt-16 sm:mt-0" ref={resultsRef}>
                                         <div className="relative container mx-auto">
                                             <div className="max-w-lg xl:max-w-none mx-auto mb-8 xl:mb-20 px-4 xl:px-8">
                                                 <h4 className="relative z-10 text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-12 xl:pt-0">Предлагаем отправиться по&nbsp;маршруту &laquo;{route.title}&raquo;</h4>
                                                 <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{route.text}</div>
-                                                <div className="relative z-10 border border-black rounded-[30px] flex flex-col items-center overflow-hidden">
-                                                    <ul className="relative grid grid-cols-1 xl:grid-cols-3 w-full xl:pl-20 pt-24 xl:pt-0 -my-px -mx-px">
-                                                        {route.items.map((item, index) => <li key={index}>
-                                                            <div className="bg-yellow-200 rounded-[30px] border border-black -mt-24 xl:-mt-0 xl:-ml-20 relative px-6 py-5">
-                                                                <div className="flex items-center mb-2">
-                                                                    <div className="shrink-0 w-10  h-10 flex items-center justify-center bg-rose-600 rounded-full border border-rose-600 mr-4 xl:mr-6">
-                                                                        <div className="text-center text-white text-2xl font-light">{index + 1}</div>
+                                                <div className="flex items-center flex-col">
+                                                    <div className="relative py-[5rem] xl:py-[9.5rem] px-0 xl:px-4 flex flex-col items-center gap-[1.35rem] xl:gap-[3.65rem]">
+                                                        <img src={RoadNew.src} alt="" className="absolute top-0 max-w-none pointer-events-none hidden xl:block" />
+                                                        <img src={RoadNewMob.src} alt="" className="absolute top-0 max-w-none pointer-events-nones xl:hidden" />
+                                                        {route.items.map((item, index) => <div key={index} className="gap-4 bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[130px] xl:h-[210px] w-[310px] xl:w-[642px] p-2 xl:p-5">
+                                                            <div className="w-3/5 xl:w-1/2" style={{
+                                                                order: index % 2 ? 1 : 2
+                                                            }} >
+                                                                <div className="flex mb-2">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative top-1.5 border-rose-600 mr-3">
+                                                                        <div className="text-center text-white text-sm xl:text-2xl font-light">{index + 1}</div>
                                                                     </div>
-                                                                    <div className={`text-black text-xl font-bold ${index < 2 ? `pr-[56px]` : ``}`}>{item.title}</div>
+                                                                    <div className={`text-black xl:text-xl font-bold leading-tight`}>{item.title}</div>
                                                                 </div>
-                                                                <div className="flex items-center mb-2">
-                                                                    <div className="shrink-0 w-10  h-10 flex items-center justify-center rounded-full border border-black mr-4">
-                                                                        <img src={item.icon} className="w-5.5 h-5.5" alt="" />
+                                                                <div className="flex mb-2">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full border border-black relative top-1.5 mr-3 ">
+                                                                        <img src={item.icon} className="w-3 h-3 xl:w-5.5 xl:h-5.5" alt="" />
                                                                     </div>
-                                                                    <div className="text-black text-xs xl:pr-[56px] xl:min-h-[4rem]">{item.text}</div>
-                                                                </div>
-                                                                <div className="pb-6">
-                                                                    <div className="pt-[54%] rounded-2xl bg-cover bg-center" style={{
-                                                                        backgroundImage: `url('${item.image}')`
-                                                                    }} />
+                                                                    <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
                                                                 </div>
                                                             </div>
-                                                        </li>)}
-                                                    </ul>
-                                                    <div className="w-full absolute bottom-0 left-0 h-[278px] bg-grad flex flex-col items-center justify-end pb-10">
-                                                        <a href={route.link} target="_blank" className="relative z-10 flex flex-col xl:flex-row gap-2 items-center group">
-                                                            <div className="w-[318px] text-center text-black text-[22px] font-medium leading-loose">Скачать весь маршрут</div>
-                                                            <svg className="group-hover:scale-110 transition duration-500" width="45" height="45" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <rect width="68" height="68" rx="34" fill="#F4FF70" />
-                                                                <path fillRule="evenodd" clipRule="evenodd" d="M33.1692 14.2459V44.0652L20.8173 31.5356L20.1051 32.2377L33.3131 45.6357L33.6692 45.9969L34.0252 45.6357L47.2332 32.2377L46.5211 31.5356L34.1692 44.0652V14.2459H33.1692ZM16.498 48.7562H51.4992V47.7562H16.498V48.7562Z" fill="black" />
+                                                            <div className="w-2/5 xl:w-1/2 h-[100px] xl:h-full rounded-2xl bg-cover bg-center shrink-0" style={{
+                                                                backgroundImage: `url('${item.image}')`,
+                                                                order: index % 2 ? 2 : 1
+                                                            }} />
+                                                        </div>)}
+                                                        <a href={route.link} target="_blank" className="absolute bottom-2 z-20">
+                                                            <svg className="w-8 xl:w-[56px] h-8 xl:h-[56px]" viewBox="0 0 56 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <circle cx="28" cy="27.6667" r="27.3333" fill="#FF0032" />
+                                                                <path fillRule="evenodd" clipRule="evenodd" d="M27.4666 14.3334V33.6437L19.4742 25.5363L18.9994 26.0043L27.5625 34.6906L27.7999 34.9314L28.0373 34.6906L36.6004 26.0043L36.1256 25.5363L28.1332 33.6437V14.3334H27.4666ZM16.6666 36.7164H39.3588V36.0497H16.6666V36.7164Z" fill="white" />
+                                                                <path d="M27.4666 33.6437L27.2292 33.8777L27.7999 34.4566V33.6437H27.4666ZM27.4666 14.3334V14H27.1332V14.3334H27.4666ZM19.4742 25.5363L19.7116 25.3023L19.4776 25.0649L19.2402 25.2989L19.4742 25.5363ZM18.9994 26.0043L18.7654 25.767L18.528 26.001L18.7621 26.2384L18.9994 26.0043ZM27.5625 34.6906L27.3251 34.9246L27.3251 34.9246L27.5625 34.6906ZM27.7999 34.9314L27.5625 35.1654L27.7999 35.4062L28.0373 35.1654L27.7999 34.9314ZM28.0373 34.6906L28.2747 34.9246L28.2747 34.9246L28.0373 34.6906ZM36.6004 26.0043L36.8377 26.2384L37.0718 26.001L36.8344 25.767L36.6004 26.0043ZM36.1256 25.5363L36.3596 25.2989L36.1222 25.0649L35.8882 25.3023L36.1256 25.5363ZM28.1332 33.6437H27.7999V34.4566L28.3706 33.8777L28.1332 33.6437ZM28.1332 14.3334H28.4666V14H28.1332V14.3334ZM39.3588 36.7164V37.0497H39.6921V36.7164H39.3588ZM16.6666 36.7164H16.3333V37.0497H16.6666V36.7164ZM39.3588 36.0497H39.6921V35.7164H39.3588V36.0497ZM16.6666 36.0497V35.7164H16.3333V36.0497H16.6666ZM27.7999 33.6437V14.3334H27.1332V33.6437H27.7999ZM19.2368 25.7703L27.2292 33.8777L27.7039 33.4097L19.7116 25.3023L19.2368 25.7703ZM19.2335 26.2417L19.7082 25.7737L19.2402 25.2989L18.7654 25.767L19.2335 26.2417ZM27.7999 34.4566L19.2368 25.7703L18.7621 26.2384L27.3251 34.9246L27.7999 34.4566ZM28.0373 34.6974L27.7999 34.4566L27.3251 34.9246L27.5625 35.1654L28.0373 34.6974ZM27.7999 34.4566L27.5625 34.6974L28.0373 35.1654L28.2747 34.9246L27.7999 34.4566ZM36.363 25.7703L27.7999 34.4566L28.2747 34.9246L36.8377 26.2384L36.363 25.7703ZM35.8916 25.7737L36.3663 26.2417L36.8344 25.767L36.3596 25.2989L35.8916 25.7737ZM28.3706 33.8777L36.363 25.7703L35.8882 25.3023L27.8959 33.4097L28.3706 33.8777ZM27.7999 14.3334V33.6437H28.4666V14.3334H27.7999ZM27.4666 14.6667H28.1332V14H27.4666V14.6667ZM39.3588 36.3831H16.6666V37.0497H39.3588V36.3831ZM39.0255 36.0497V36.7164H39.6921V36.0497H39.0255ZM16.6666 36.3831H39.3588V35.7164H16.6666V36.3831ZM17 36.7164V36.0497H16.3333V36.7164H17Z" fill="white" />
                                                             </svg>
                                                         </a>
                                                     </div>
+                                                    <a href={route.link} target="_blank" className="mb-10">
+                                                        <div className="w-[318px] text-center text-black text-sm font-medium leading-snug">Скачать весь маршрут</div>
+                                                    </a>
+                                                    <div className="text-center text-black text-xl font-bold max-w-lg"> Этот маршрут создан специально для поездок на машине.  Выбирай отель, из которого удобно выезжать на каршеринге</div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="flex relative z-10 items-center flex-col mb-16 xl:mb-20 px-4 xl:px-8 max-w-lg xl:max-w-none mx-auto">
-                                            <div className="text-center text-stone-900 text-[30px] xl:text-[36px] font-bold max-w-3xl mb-8">Этот маршрут создан специально для поездок на машине</div>
-                                            <svg className="w-[156px] xl:w-[214px] h-auto" viewBox="0 0 214 151" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M12.9349 145.93L41.3993 71.3797C41.8354 70.2377 42.9207 69.4744 44.1429 69.4503L185.697 66.6594C187.035 66.633 188.228 67.4957 188.623 68.7741L212.493 146.115C213.089 148.045 211.646 150 209.627 150L15.7375 150C13.6353 150 12.185 147.894 12.9349 145.93Z" fill="#B0C6FF" stroke="black" />
-                                                <path fillRule="evenodd" clipRule="evenodd" d="M158.766 92.592C139.754 61.7949 115.703 0.999284 161.417 1C206.201 1.0007 182.747 57.1627 163.781 92.4119C162.714 94.3956 159.949 94.5088 158.766 92.592ZM165.715 20.427C157.685 16.9201 152.435 20.1081 151.823 26.8648C151.317 32.4514 153.024 38.1185 157.83 41.4937C162.636 44.8688 166.858 43.4561 169.641 37.4783C173.889 28.3507 170.884 24.0581 166.209 20.7076C166.056 20.5978 165.888 20.5024 165.715 20.427Z" fill="#F3F7FF" />
-                                                <path d="M161.417 1L161.417 0.5L161.417 1ZM158.766 92.592L159.191 92.3293L158.766 92.592ZM163.781 92.4119L164.222 92.6488L163.781 92.4119ZM151.823 26.8648L152.321 26.9099L151.823 26.8648ZM165.715 20.427L165.515 20.8852L165.515 20.8852L165.715 20.427ZM157.83 41.4937L158.117 41.0845L157.83 41.4937ZM169.641 37.4783L170.094 37.6893L169.641 37.4783ZM166.209 20.7076L166.5 20.3012L166.209 20.7076ZM161.417 0.5C149.871 0.499819 142.614 4.34703 138.62 10.7144C134.651 17.0431 133.981 25.748 135.324 35.3163C138.013 54.4637 148.819 77.4307 158.34 92.8546L159.191 92.3293C149.701 76.9562 138.976 54.1268 136.315 35.1773C134.983 25.6972 135.684 17.2785 139.467 11.2458C143.227 5.25179 150.106 1.49982 161.417 1.5L161.417 0.5ZM164.222 92.6488C173.706 75.0217 184.351 52.1007 187 33.5585C188.325 24.2917 187.667 16.0208 183.765 10.0529C179.841 4.05004 172.719 0.500177 161.417 0.5L161.417 1.5C172.507 1.50017 179.248 4.97083 182.928 10.6001C186.632 16.2643 187.322 24.2371 186.01 33.417C183.388 51.7683 172.823 74.5529 163.341 92.175L164.222 92.6488ZM158.34 92.8546C159.732 95.1081 162.977 94.9622 164.222 92.6488L163.341 92.175C162.451 93.829 160.167 93.9095 159.191 92.3293L158.34 92.8546ZM152.321 26.9099C152.616 23.6513 154.015 21.3483 156.212 20.2437C158.423 19.1319 161.577 19.1652 165.515 20.8852L165.915 19.9688C161.824 18.1819 158.337 18.0557 155.763 19.3503C153.174 20.6522 151.642 23.3215 151.325 26.8196L152.321 26.9099ZM158.117 41.0845C153.5 37.8416 151.826 32.376 152.321 26.9099L151.325 26.8196C150.808 32.5269 152.548 38.3954 157.542 41.9029L158.117 41.0845ZM169.187 37.2673C167.824 40.1954 166.155 41.9032 164.334 42.5198C162.53 43.1302 160.44 42.7158 158.117 41.0845L157.542 41.9029C160.025 43.6467 162.449 44.2135 164.654 43.4669C166.842 42.7264 168.674 40.739 170.094 37.6893L169.187 37.2673ZM165.918 21.114C168.222 22.7655 170.036 24.5955 170.793 27.0727C171.548 29.5446 171.282 32.7666 169.187 37.2673L170.094 37.6893C172.248 33.0624 172.603 29.5743 171.749 26.7804C170.897 23.9917 168.871 22.0002 166.5 20.3012L165.918 21.114ZM165.515 20.8852C165.656 20.9465 165.793 21.0246 165.918 21.114L166.5 20.3012C166.319 20.1711 166.12 20.0583 165.915 19.9688L165.515 20.8852Z" fill="black" />
-                                                <path d="M19.582 131.733C65.8443 149.956 125.121 129.048 134.145 124.309C152.329 114.759 157.276 108.587 158.614 105.793C159.097 104.784 159.679 103.666 160.674 103.154C169.107 98.8113 192.95 92.5873 197.288 92.5873" stroke="black" strokeLinejoin="round" strokeDasharray="6 6" />
-                                                <path d="M135.522 79.5029L135.478 79.046C135.357 77.8078 134.8 76.9588 134.057 76.4315C133.304 75.8962 132.327 75.671 131.357 75.7568L131.181 75.7723L131.034 75.6737C130.14 75.0733 129.009 74.7989 127.709 75.1638C123.487 76.3502 119.145 76.7101 114.803 76.8294C112.964 76.8799 111.14 76.8874 109.325 76.895C106.82 76.9054 104.33 76.9158 101.836 77.0389L101.603 77.0504L101.444 76.8786C99.6384 74.9215 97.8741 72.9355 96.1138 70.954C90.7263 64.8894 85.3764 58.8672 78.9929 53.8462C77.6951 52.8267 76.3273 52.8144 75.1855 53.3366L75.1151 53.3688L75.0383 53.3782C71.2418 53.8424 67.4753 54.4681 63.6984 55.0956C62.2788 55.3314 60.8576 55.5675 59.4328 55.7954C54.227 56.6279 48.9885 57.3475 43.6683 57.5238L43.6682 57.5238C42.7081 57.5554 41.9933 57.8578 41.4824 58.2988C40.9682 58.7427 40.6321 59.3519 40.476 60.0401L40.4554 60.1309L40.4035 60.2082C38.5595 62.9546 36.7624 65.745 34.9624 68.5398C31.7514 73.5257 28.5313 78.5255 25.0203 83.314L24.8763 83.5105L24.6328 83.5181C23.6802 83.5479 22.8451 83.5728 22.0977 83.595C16.9654 83.7478 15.967 83.7775 9.47102 84.4524L9.47064 84.4524C8.53274 84.5491 7.82381 84.8964 7.30565 85.3729L7.18013 85.4883L7.01025 85.5029C6.24394 85.5691 5.5403 85.8436 5.00754 86.3292C4.47994 86.81 4.08853 87.5261 3.98645 88.5387L3.98642 88.5389C3.81625 90.2186 3.78827 91.9131 3.75987 93.633C3.75049 94.2012 3.74106 94.7722 3.72644 95.3463C3.66801 97.6412 3.52606 99.9634 2.95081 102.236C2.70097 103.226 2.83426 104.025 3.17006 104.654L3.33076 104.956L3.10874 105.215C2.22004 106.253 1.87404 107.753 2.18658 109.033C2.49063 110.278 3.4168 111.327 5.15102 111.545L5.16772 111.548L5.18425 111.551C6.07849 111.725 6.88793 111.894 7.64421 112.052C9.43205 112.425 10.9229 112.736 12.5349 112.912C14.8058 113.158 17.3094 113.132 21.152 112.587L21.5788 112.527L21.7015 112.94C23.7811 119.943 31.4603 124.341 38.5516 124.522C42.425 124.62 46.0044 123.357 48.5128 121.086C51.0125 118.823 52.4708 115.542 52.0956 111.531C52.0582 111.142 51.9944 110.758 51.92 110.367L51.8174 109.827L52.3644 109.776C59.4213 109.111 66.4888 108.591 73.5503 108.07L74.0705 108.032C81.3069 107.498 88.537 106.962 95.7538 106.268L96.2497 106.22L96.2992 106.716C97.0948 114.676 104.248 119.423 111.955 118.905L135.522 79.5029ZM135.522 79.5029L135.523 79.5029M135.522 79.5029L135.523 79.5029M135.523 79.5029C135.658 80.9225 135.779 82.3468 135.9 83.7736C136.316 88.6618 136.734 93.5777 137.714 98.4234C137.867 99.1826 137.651 100.023 137.178 100.762C136.705 101.501 136.008 102.085 135.284 102.345C132.213 103.448 129.077 103.702 125.796 103.967L125.784 103.968L125.339 104.004L125.325 104.45C125.092 111.821 119.543 118.393 111.955 118.905L135.523 79.5029ZM29.155 108.97C29.7542 108.155 30.8377 107.766 31.8503 107.552C32.7543 107.361 33.7183 107.287 34.4638 107.23C34.573 107.221 34.6775 107.213 34.7764 107.205L34.7774 107.205C35.2303 107.17 35.6222 107.055 35.9941 106.902L36.1294 106.847L36.2733 106.873C36.6379 106.939 37.0068 106.973 37.4056 106.937L37.4059 106.937C40.5329 106.654 43.6523 108.565 44.3349 111.717L29.155 108.97ZM29.155 108.97C29.1536 108.972 29.1524 108.974 29.1513 108.975L29.4116 109.165M29.155 108.97L44.3349 111.717C44.5371 112.648 44.4886 113.477 44.2129 114.191C43.937 114.905 43.4472 115.468 42.827 115.888C41.6018 116.719 39.8552 117.004 38.0777 116.87L37.8965 116.857L37.8929 116.853C34.6019 116.545 30.8881 114.56 29.3997 111.571L29.3993 111.571C29.1916 111.152 29.0635 110.89 28.9924 110.611C28.9327 110.376 28.9149 110.131 28.8902 109.791C28.8863 109.737 28.8822 109.68 28.8777 109.621L29.1968 109.597M29.4116 109.165C29.3942 109.165 29.3772 109.165 29.3606 109.167C29.2771 109.175 29.2126 109.203 29.1709 109.226C29.1293 109.249 29.0999 109.274 29.0822 109.291C29.0779 109.295 29.0739 109.299 29.0702 109.303M29.4116 109.165L29.5685 109.279C29.5685 109.279 29.5686 109.278 29.5686 109.278C29.5686 109.278 29.5686 109.278 29.5686 109.278L29.5562 109.268L29.4148 109.165C29.4142 109.165 29.4137 109.165 29.4131 109.165C29.4126 109.165 29.4121 109.165 29.4116 109.165ZM29.0702 109.303C29.0698 109.296 29.0695 109.291 29.0693 109.286C29.0684 109.259 29.07 109.239 29.0708 109.231C29.0718 109.221 29.0729 109.213 29.0734 109.21C29.0737 109.208 29.074 109.207 29.0741 109.206C29.0744 109.204 29.0743 109.205 29.0735 109.209C29.0728 109.212 29.0718 109.215 29.0707 109.22C29.0679 109.23 29.0639 109.244 29.0587 109.261C29.0514 109.284 29.043 109.308 29.0347 109.33C29.0258 109.353 29.0197 109.366 29.0175 109.37C29.0164 109.372 29.019 109.367 29.0255 109.357C29.0289 109.352 29.0347 109.344 29.0429 109.333C29.049 109.326 29.0581 109.315 29.0702 109.303ZM29.0702 109.303C29.0711 109.314 29.0725 109.328 29.0751 109.344C29.0788 109.367 29.0867 109.406 29.105 109.451C29.1145 109.474 29.1282 109.503 29.148 109.533C29.1608 109.553 29.1769 109.575 29.1968 109.597M29.1968 109.597L29.4735 109.576C29.4735 109.576 29.4734 109.576 29.4734 109.576C29.4734 109.576 29.4733 109.576 29.4733 109.576L29.3763 109.583L29.1972 109.597C29.1971 109.597 29.197 109.597 29.197 109.597C29.1969 109.597 29.1969 109.597 29.1968 109.597ZM112.688 97.9266L112.354 97.8944L112.197 98.191C111.715 99.1049 110.809 99.7916 109.332 99.8305C107.154 99.8864 105.639 100.713 104.783 101.974C103.937 103.219 103.79 104.807 104.172 106.289C104.935 109.253 107.87 111.996 112.084 111.142C115.412 110.468 117.334 107.327 117.576 104.355C117.697 102.857 117.401 101.345 116.6 100.152C115.79 98.9438 114.486 98.0999 112.688 97.9266Z" fill="#F3F7FF" stroke="black" />
-                                                <path d="M89.8452 77.0869L89.9376 77.5782L89.8452 77.0869C89.2413 77.2005 88.5815 77.3299 87.8782 77.4679C84.0102 78.2267 78.8213 79.2446 74.3168 79.3168C71.6511 79.3594 69.2985 79.0676 67.6229 78.2444C66.793 77.8367 66.143 77.3055 65.6959 76.6314C65.2502 75.9593 64.9861 75.1154 64.9735 74.0481C64.9513 72.1528 64.7751 70.4761 64.6235 69.0328C64.5888 68.7027 64.5554 68.3848 64.5254 68.0793C64.3612 66.4058 64.3083 65.1594 64.617 64.2066C64.9052 63.3171 65.5295 62.6318 66.913 62.145C68.3268 61.6474 70.4865 61.377 73.7577 61.3373C75.2725 61.4793 77.3869 62.4629 79.6621 63.9555C81.9293 65.4428 84.2861 67.3882 86.2515 69.3513C88.2268 71.3241 89.7666 73.2752 90.4443 74.7692C90.7881 75.527 90.8673 76.0755 90.7732 76.425C90.6971 76.7073 90.4763 76.9682 89.8452 77.0869Z" fill="#B0C6FF" stroke="black" />
-                                                <path d="M47.9611 64.5956L47.8506 64.1082L47.9611 64.5956C47.8456 64.6218 47.6676 64.6994 47.4237 64.8579C47.1854 65.0126 46.9096 65.2276 46.6016 65.5C45.9858 66.0447 45.2686 66.7943 44.5018 67.6858C42.9695 69.4675 41.2681 71.7823 39.8234 74.0742C38.3733 76.3747 37.2058 78.6147 36.7132 80.253C36.4621 81.0881 36.415 81.6774 36.5131 82.0245C36.5573 82.1808 36.6243 82.2654 36.6992 82.317C36.7792 82.3722 36.9199 82.4251 37.1693 82.4222C38.906 82.4018 40.5577 82.4057 42.1155 82.4105L42.3709 82.4113C43.8346 82.4159 45.2125 82.4203 46.5036 82.4048C49.2416 82.3721 51.5545 82.2504 53.4218 81.8651C55.2885 81.4798 56.6485 80.843 57.5423 79.8285C58.4296 78.8212 58.9213 77.3681 58.896 75.2104L59.3959 75.2046L58.896 75.2104C58.8881 74.5363 58.8838 73.8946 58.8798 73.2842C58.8677 71.4686 58.8575 69.9292 58.7585 68.6316C58.6255 66.8885 58.3369 65.7011 57.7571 64.9285C57.2054 64.1934 56.323 63.7518 54.766 63.6766C53.1925 63.6007 51.0075 63.9047 47.9611 64.5956Z" fill="#B0C6FF" stroke="black" />
-                                                <path d="M42.7035 9.0526C43.1745 8.13561 43.3487 7.05173 43.9552 6.19246C44.5532 10.7899 47.2341 16.8292 50.4666 20.7081C51.6609 22.1413 54.5128 24.7497 56.8856 26.5595C56.8856 26.5595 51.7327 32.8455 51.5642 33.0129C51.5642 33.0129 48.8033 38.1053 48.0984 40.1989C47.9035 40.7777 47.6487 42.1024 47.3983 42.6662C47.3199 42.8429 47.2082 43.3289 47.0755 43.1633C46.4252 42.3519 44.2179 39.0801 43.8093 38.1563C42.136 35.9244 39.2459 33.0376 39.2459 33.0376C37.0636 31.1762 35.7434 29.9461 33.3442 28.2633C32.6351 27.766 30.9712 26.4536 29.6937 26.2984C31.7921 25.0319 34.9437 21.914 36.2925 20.0002C38.8014 16.4406 40.7519 12.8525 42.7035 9.0526Z" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M16.2564 61.4577C13.2741 56.934 10.763 56.4037 9.11551 52.0096C8.1743 53.8597 5.97278 55.8006 3.75625 58.4703C2.88381 59.5211 1.04064 62.7047 1.04064 62.7047C2.77945 64.1176 6.8658 70.479 7.59653 72.3346C8.89861 70.3398 10.4718 67.7421 12.2047 65.6496C12.6224 65.2687 16.2564 61.4577 16.2564 61.4577Z" fill="#F3F7FF" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                                        <div className="animate-bounce flex relative z-10 items-center flex-col my-10 px-4 xl:px-8 max-w-lg xl:max-w-none mx-auto">
+                                            <svg width="44" height="23" viewBox="0 0 44 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.818359 0.503662L21.8601 21.5454L42.9018 0.503662" stroke="black" stroke-width="0.667992" />
                                             </svg>
+
                                         </div>
                                         <div className="relative">
                                             <div className="relative z-10 container mx-auto">
                                                 <div className="max-w-lg xl:max-w-[82.5rem] mx-auto mb-40 px-4 xl:px-8">
                                                     <div className="bg-white rounded-[30px] flex flex-col items-center px-4 pt-12 pb-[16rem] bg-bottom bg-contain bg-no-repeat relative">
-                                                        <div className="absolute top-0 left-0 bottom-0 right-0 items-center justify-center hidden xl:flex">
-                                                            <img src={Road1.src} className="absolute max-w-none pointer-events-none ml-[14rem] mt-[64rem] -rotate-[1.57deg]" />
+                                                        <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex">
+                                                            <img src={Road2.src} alt={``} className="max-w-none absolute -bottom-[84rem] ml-[8rem] rotate-[5deg]" />
                                                         </div>
                                                         <div className="absolute top-0 left-0 bottom-0 right-0 rounded-[30px] overflow-hidden">
                                                             <img src={Photos.src} className="absolute w-full bottom-0 left-0 hidden xl:block" />
@@ -378,8 +383,8 @@ export default function Welcome(props) {
                                                                 <path d="M145.015 57.0623C142.544 53.0462 140.342 52.4938 139.047 48.6399C138.145 50.2009 136.125 51.7925 134.063 54.0126C133.252 54.8864 131.502 57.5639 131.502 57.5639C132.988 58.8488 136.367 64.4922 136.945 66.121C138.171 64.4488 139.661 62.2667 141.273 60.5265C141.656 60.2136 145.015 57.0623 145.015 57.0623Z" fill="white" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
                                                             </svg>
                                                         </div>
-                                                        <div className="relative text-center text-stone-900 text-[24px] sm:text-[36px] font-bold mb-8 max-w-3xl mx-auto">Бронируй отель, получай промокод на&nbsp;BelkaCar и путешествуй выгодно</div>
-                                                        <a target='_blank' href="https://travel.mts.ru/?utm_source=inhouse&utm_medium=special&utm_campaign=belkacar&utm_content=landing" className={`relative px-6 sm:w-[24rem] h-[4rem] pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1.5rem] sm:text-2xl text-white`}>Забронировать</a>
+                                                        <div className="relative text-center text-stone-900 text-[18px] sm:text-[36px] font-bold mb-8 max-w-3xl mx-auto">Бронируй отель, получай промокод на&nbsp;BelkaCar и путешествуй выгодно</div>
+                                                        <a target='_blank' href="https://travel.mts.ru/?utm_source=inhouse&utm_medium=special&utm_campaign=belkacar&utm_content=landing" className={`relative px-6 sm:w-[24rem] h-[3rem] xl:h-[4rem] pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1rem] sm:text-2xl text-white`}>Забронировать</a>
                                                     </div>
 
                                                 </div>
@@ -390,7 +395,7 @@ export default function Welcome(props) {
                                         </div>
                                         <div className="relative mb-16 xl:mb-20 flex flex-col items-center justify-center max-w-lg mx-auto xl:max-w-none">
                                             <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-12 xl:mb-4 max-w-4xl mx-auto">Новые места ближе <br />с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
-                                            <div className={`relative rotate-[3deg] w-[48rem] -scale-x-100 mb-12 xl:mb-4`}>
+                                            <div className={`relative rotate-[3deg] w-[48rem] mb-12 xl:mb-4`}>
                                                 <div className="scale-[.75] sm:scale-[.9]">
                                                     <img src={Girls.src} alt={``} className="w-full" style={scale2} />
                                                 </div>

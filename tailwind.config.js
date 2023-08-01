@@ -50,13 +50,34 @@ export default {
         wiggle: {
           '0%, 100%': { transform: 'rotate(-1deg)' },
           '50%': { transform: 'rotate(1deg)' },
+        },
+        bounce: {
+          '0%, 100%': { transform: 'translateY(-100%)' },
+          '50%': { transform: 'translateY(0)' },
         }
       },
       animation: {
         wiggle: 'wiggle 1s ease-in-out infinite',
+        bounce: 'bounce 1s ease-in-out infinite',
       }
     },
   },
 
   plugins: [],
 };
+
+
+
+
+// animate-bounce	animation: bounce 1s infinite;
+
+// @keyframes bounce {
+//   0%, 100% {
+//     transform: translateY(-25%);
+//     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+//   }
+//   50% {
+//     transform: translateY(0);
+//     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+//   }
+// }

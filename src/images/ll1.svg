@@ -1,14 +1,15 @@
-<svg width="539" height="840" viewBox="0 0 539 840" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M80.5 847C97.1667 812.334 183 614.5 -43.5 565.5" stroke="#F4FF70" stroke-width="20" />
-    <path d="M80.5 847C97.1667 812.334 183 614.5 -43.5 565.5" stroke="black" stroke-width="2"
-        stroke-dasharray="10 10" />
-    <mask id="mask0_409_125" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="38" y="0"
-        width="501" height="848">
-        <rect x="38" width="501" height="848" rx="50" fill="#F4FF70" />
+<svg width="150" height="554" viewBox="0 0 150 554" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <mask id="mask0_102_10" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+        width="328" height="554">
+        <path
+            d="M294.927 0.550049H33.3939C15.3838 0.550049 0.783691 15.1501 0.783691 33.1602V521.009C0.783691 539.019 15.3838 553.619 33.3939 553.619H294.927C312.938 553.619 327.538 539.019 327.538 521.009V33.1602C327.538 15.1501 312.938 0.550049 294.927 0.550049Z"
+            fill="#F4FF70" />
     </mask>
-    <g mask="url(#mask0_409_125)">
-        <path d="M80.5 847C97.1667 812.334 183 614.5 -43.5 565.5" stroke="#B0C6FF" stroke-width="20" />
-        <path d="M80.5 847C97.1667 812.334 183 614.5 -43.5 565.5" stroke="black" stroke-width="2"
-            stroke-dasharray="10 10" />
+    <g mask="url(#mask0_102_10)">
+        <path d="M28.5022 552.967C39.3722 530.357 95.353 401.329 -52.3711 369.371" stroke="#B0C6FF"
+            stroke-width="13.0441" />
+        <path d="M28.5022 552.967C39.3722 530.357 95.353 401.329 -52.3711 369.371" stroke="black"
+            stroke-width="1.30441" stroke-dasharray="6.52 6.52" />
     </g>
 </svg>
+    
