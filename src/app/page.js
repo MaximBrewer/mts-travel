@@ -296,7 +296,7 @@ export default function Welcome(props) {
                                                         <img src={RoadNewMob.src} alt="" className="absolute top-0 max-w-none pointer-events-nones xl:hidden" />
                                                         {route.items.map((item, index) => <div key={index} className="gap-4 bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[130px] xl:h-[210px] w-[310px] xl:w-[642px] p-2 xl:p-5">
                                                             <div className="w-3/5 xl:w-1/2" style={{
-                                                                order: index % 2 ? 1 : 2
+                                                                order: index % 2 ? 2 : 1
                                                             }} >
                                                                 <div className="flex mb-2">
                                                                     <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative top-1.5 border-rose-600 mr-3">
@@ -306,14 +306,14 @@ export default function Welcome(props) {
                                                                 </div>
                                                                 <div className="flex mb-2">
                                                                     <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full border border-black relative top-1.5 mr-3 ">
-                                                                        <img src={item.icon} className="w-3 h-3 xl:w-5.5 xl:h-5.5" alt="" />
+                                                                        <img src={item.icon} className="w-4 h-4 xl:w-5.5 xl:h-5.5" alt="" />
                                                                     </div>
                                                                     <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
                                                                 </div>
                                                             </div>
                                                             <div className="w-2/5 xl:w-1/2 h-[100px] xl:h-full rounded-2xl bg-cover bg-center shrink-0" style={{
                                                                 backgroundImage: `url('${item.image}')`,
-                                                                order: index % 2 ? 2 : 1
+                                                                order: index % 2 ? 1 : 2
                                                             }} />
                                                         </div>)}
                                                         <a href={route.link} target="_blank" className="absolute bottom-2 z-20">
