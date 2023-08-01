@@ -28,12 +28,27 @@ import Roadm3 from "../images/roadm3.svg"
 import Photos from "../images/photos.png"
 import MPhotos from "../images/mphotos.png"
 import Girls from "../images/girls.jpg"
+import parse from "html-react-parser"
 
 import RoadNew from "../images/nr.svg"
 import RoadNewMob from "../images/nrm.svg"
 
 import { useEffect, useRef, useState } from 'react';
 
+const intro = [
+    {
+        title: `4&nbsp;города`,
+        text: `Ждем тебя в Сочи, Санкт-Петербурге, Казани, Калининграде и их окрестностях.`
+    },
+    {
+        title: `12&nbsp;маршрутов`,
+        text: `Устанавливай фильтр и получай маршрут, который подходит тебе больше всего. Подняться к водопаду? Понежиться в спа? А, может, дегустировать сыры? Легко.`
+    },
+    {
+        title: `<span className="whitespace-nowrap">Много-много</span><br />впечатлений`,
+        text: `Успей увидеть больше на каршеринге. Получи маршрут бесплатно от МТС Travel и промокод на 500 рублей от BelkaCar.`
+    },
+];
 
 const Filter = (props) => {
 
@@ -43,16 +58,16 @@ const Filter = (props) => {
         <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
             <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{window.questions[city.code][findex].question}</h4>
             <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
-                {window.questions[city.code][findex].answers.map((item, idx) => <a key={idx} href="#" onClick={e => {
+                {window.questions[city.code][findex].answers.map((item, idx) => <div key={idx} onClick={e => {
                     setAnswers(prev => {
                         let arr = prev.slice()
                         arr.push(idx)
                         return arr
                     })
                     setFindex(prev => ++prev)
-                }} className="xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
                     <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
-                </a>)}
+                </div>)}
             </div>
         </div>
     </div> : ``
@@ -87,7 +102,7 @@ export default function Welcome(props) {
     const headerRef = useRef(null)
 
     const scroll = (e) => {
-        if (e.offset.y > 100 && headerRef.current) {
+        if (e.offset.y > 5 && headerRef.current) {
             headerRef.current.classList.add(`bg-indigo-300`);
             headerRef.current.classList.add(`backdrop-blur`);
             headerRef.current.classList.add(`bg-opacity-50`);
@@ -112,10 +127,11 @@ export default function Welcome(props) {
         setAnswers([])
         if (route) {
             setAnswers([]);
-            smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
+            smooth.current.scrollIntoView(resultsRef.current, { offsetTop: headerRef.current.offsetHeight });
             setTimeout(() => {
                 setCity(null)
-            }, 200)
+                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: headerRef.current.offsetHeight });
+            }, 50)
         }
     }, [route])
 
@@ -123,13 +139,14 @@ export default function Welcome(props) {
         setFindex(0)
         if (city && answers.length) {
             if (window.questions[city.code] && window.questions[city.code].length <= answers.length) {
-                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
+                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: headerRef.current.offsetHeight });
                 setRoute(null)
                 setRoute(window.routes[city.code][answers[0]])
                 setTimeout(() => {
                     setAnswers([]);
                     setCity(null)
-                }, 200)
+                    smooth.current.scrollIntoView(resultsRef.current, { offsetTop: headerRef.current.offsetHeight });
+                }, 50)
             }
         }
     }, [answers, city])
@@ -138,7 +155,7 @@ export default function Welcome(props) {
         <>
             <div className="bg-indigo-300 bg-cover bg-top">
                 <div className={`h-screen w-screen overflow-hidden`}>
-                    <div className="w-full fixed w-full top-0 z-50 transition" ref={headerRef}>
+                    <div className="w-full fixed w-full top-0 z-50" ref={headerRef}>
                         <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-3 xl:py-6`}>
                             <a href="/pdf/rules.pdf" target="_blank" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
                             <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
@@ -209,34 +226,34 @@ export default function Welcome(props) {
                                         <div className={`bg-gradient-to-t from-indigo-300 to-blue-100 xl:mb-20 px-4 xl:px-8 relative z-20 mt-32 xl:mt-12`}>
                                             <div className='h-px'></div>
                                             <div className="max-w-lg xl:container mx-auto relative">
-                                                <div className="absolute top-0 left-0 bottom-0 right-0 pointer-events-nones">
+                                                <div className="absolute top-0 left-0 bottom-0 right-0 pointer-events-none">
                                                     <img src={Roadm1.src} className="absolute max-w-none -top-[4.8rem] -right-[28.5rem] xl:hidden" />
                                                     <img src={Roadm2.src} className="absolute max-w-none -bottom-[0.1rem] -left-[16.5rem] xl:hidden" />
                                                     <img src={Roadm3.src} className="absolute max-w-none -rotate-[10deg] -bottom-[56rem] left-[1.1rem] xl:hidden" />
                                                 </div>
                                                 <div className="z-20 bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
-                                                    <img src={LR1.src} className="absolute max-w-none pointer-events-nones top-[1.52rem] -right-px xl:hidden" />
-                                                    <img src={LL1.src} className="absolute max-w-none pointer-events-nones -bottom-px -left-px xl:hidden" />
+                                                    <img src={LR1.src} className="absolute max-w-none pointer-events-none top-[1.52rem] -right-px xl:hidden" />
+                                                    <img src={LL1.src} className="absolute max-w-none pointer-events-none -bottom-px -left-px xl:hidden" />
                                                     <div className="relative flex flex-col pt-12 items-center">
                                                         <div className="text-stone-900 text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-6">
                                                             <Pin className={`rotate-[-169.04deg] absolute w-8 h-auto xl:w-10 right-6 -top-11 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[2.58deg] px-8`}>4&nbsp;города</div>
+                                                            <div className={`text-center rotate-[2.58deg] px-8`}>{parse(intro[0].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[16rem]">Ждем тебя в Сочи, Санкт-Петербурге, Казани, Калининграде и их окрестностях.</div>
+                                                        <div className="text-stone-900 text-sm font-medium max-w-[16rem]">{parse(intro[0].text)}</div>
                                                     </div>
                                                     <div className="relative flex flex-col pt-12 items-center xl:ml-12">
                                                         <div className="text-stone-900 text-2xl font-bold rotate-[1.80deg] bg-white py-2 px-3 mb-6">
                                                             <Pin className={`rotate-[161.36deg] absolute right-20 w-8 h-auto xl:w-10 -top-11 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[-1.80deg] px-8`}>12&nbsp;маршрутов</div>
+                                                            <div className={`text-center rotate-[-1.80deg] px-8`}>{parse(intro[1].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-start">Устанавливай фильтр и получай маршрут, который подходит тебе больше всего. Хайкинг в горах? Понежиться в спа? А, может, дегустировать новые вина? Легко.</div>
+                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-start">{parse(intro[1].text)}</div>
                                                     </div>
                                                     <div className="relative flex flex-col pt-12 items-center xl:ml-12">
                                                         <div className="text-stone-900 text-2xl font-bold rotate-[-2.30deg] bg-white py-2 px-3 mb-6">
                                                             <Pin className={`rotate-[176.36deg] absolute right-16 w-8 h-auto xl:w-10 -top-11 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[2.30deg] px-8`}><span className="whitespace-nowrap">Много-много</span><br />впечатлений</div>
+                                                            <div className={`text-center rotate-[2.30deg] px-8`}>{parse(intro[2].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end">Успей увидеть больше на каршеринге. Получи маршрут бесплатно от МТС Travel и промокод на 500 рублей от BelkaCar.</div>
+                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end">{parse(intro[2].text)}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -245,11 +262,11 @@ export default function Welcome(props) {
                                     <div className="w-full relative z-50 mt-16 sm:mt-0" ref={citiesRef}>
                                         <div className="flex flex-col items-center my-8">
                                             <div className="text-center text-black text-xl font-medium mb-2 xl:mb-6">Подобрать маршрут</div>
-                                            <a href="#" className="block hover:scale-125 transition duration-500 mt-6 animate-bounce">
+                                            <div className="cursor-pointer block hover:scale-125 transition duration-500 mt-6 animate-bounce">
                                                 <svg className="w-6 xl:w-8 h-auto" viewBox="0 0 48 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M1 1L24 20L47 1" stroke="black" />
                                                 </svg>
-                                            </a>
+                                            </div>
                                         </div>
                                         <div className="relative mb-12 max-w-lg xl:max-w-[1920px] mx-auto px-4 xl:px-8 z-10 min-h-[480px]">
                                             <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex -rotate-[1.5deg]">
@@ -281,11 +298,11 @@ export default function Welcome(props) {
                                                             //     text: `Калининград`,
                                                             //     img: Kalin.src
                                                             // }
-                                                        ].map((item, index) => <a key={index} href="#" onClick={e => {
+                                                        ].map((item, index) => <div key={index} onClick={e => {
                                                             setCity(item)
-                                                        }} className="xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                                                        }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
                                                             <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
-                                                        </a>)}
+                                                        </div>)}
                                                     </div>
                                                 </div>
                                             </div> : <Filter city={city} setAnswers={setAnswers} findex={findex} setFindex={setFindex} />}
@@ -294,15 +311,16 @@ export default function Welcome(props) {
                                     {route ? <div className="w-full relative z-40 mt-16 sm:mt-0" ref={resultsRef}>
                                         <div className="relative container mx-auto">
                                             <div className="max-w-lg xl:max-w-none mx-auto mb-8 xl:mb-20 px-4 xl:px-8">
-                                                <h4 className="relative z-10 text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-12 xl:pt-0">Предлагаем отправиться по&nbsp;маршруту &laquo;{route.title}&raquo;</h4>
+                                                <h4 className="relative z-10 text-center text-black text-xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-4">Предлагаем отправиться по&nbsp;маршруту &laquo;{route.title}&raquo;</h4>
                                                 <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{route.text}</div>
                                                 <div className="flex items-center flex-col">
                                                     <div className="relative py-[5rem] xl:py-[9.5rem] px-0 xl:px-4 flex flex-col items-center gap-[1.35rem] xl:gap-[3.65rem]">
                                                         <img src={RoadNew.src} alt="" className="absolute top-0 max-w-none pointer-events-none hidden xl:block" />
-                                                        <img src={RoadNewMob.src} alt="" className="absolute top-0 max-w-none pointer-events-nones xl:hidden" />
-                                                        {route.items.map((item, index) => <div key={index} className="gap-4 bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[130px] xl:h-[210px] w-[310px] xl:w-[642px] p-2 xl:p-5">
+                                                        <img src={RoadNewMob.src} alt="" className="absolute top-0 max-w-none pointer-events-none xl:hidden" />
+                                                        {route.items.map((item, index) => <div key={index} className="bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[130px] xl:h-[210px] w-[310px] xl:w-[642px] p-2 xl:p-5">
                                                             <div className="w-3/5 xl:w-1/2" style={{
-                                                                order: index % 2 ? 2 : 1
+                                                                order: index % 2 ? 2 : 1,
+                                                                padding: index % 2 ? `0 0 0 6px` : `0 6px 0 0`,
                                                             }} >
                                                                 <div className="flex mb-2">
                                                                     <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative top-1.5 border-rose-600 mr-3">
@@ -312,7 +330,7 @@ export default function Welcome(props) {
                                                                 </div>
                                                                 <div className="flex mb-2">
                                                                     <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full border border-black relative top-1.5 mr-3 ">
-                                                                        <img src={item.icon} className="w-4 h-4 xl:w-5.5 xl:h-5.5" alt="" />
+                                                                        <img src={item.icon} className="w-3 h-3 xl:w-5.5 xl:h-5.5" alt="" />
                                                                     </div>
                                                                     <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
                                                                 </div>
@@ -346,7 +364,7 @@ export default function Welcome(props) {
                                         </div>
                                         <div className="relative">
                                             <div className="relative z-10 container mx-auto">
-                                                <div className="max-w-lg xl:max-w-[82.5rem] mx-auto mb-40 px-4 xl:px-8">
+                                                <div className="max-w-lg xl:max-w-[82.5rem] mx-auto mb-16 xl:mb-40 px-4 xl:px-8">
                                                     <div className="bg-white rounded-[30px] flex flex-col items-center px-4 pt-12 pb-[16rem] bg-bottom bg-contain bg-no-repeat relative">
                                                         <div className="absolute top-0 left-0 right-0 bottom-0 items-center justify-center pointer-events-none hidden xl:flex">
                                                             <img src={Road2.src} alt={``} className="max-w-none absolute -bottom-[84rem] ml-[8rem] rotate-[5deg]" />
@@ -400,7 +418,7 @@ export default function Welcome(props) {
                                             </div>
                                         </div>
                                         <div className="relative mb-16 xl:mb-20 flex flex-col items-center justify-center max-w-lg mx-auto xl:max-w-none">
-                                            <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-12 xl:mb-4 max-w-4xl mx-auto">Новые места ближе <br />с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
+                                            <h4 className="relative text-center text-black text-[24px] sm:text-[36px] font-bold leading-tight mb-6 xl:mb-4 max-w-4xl mx-auto">Новые места ближе <br />с&nbsp;МТС&nbsp;Travel и&nbsp;BelkaCar</h4>
                                             <div className={`relative rotate-[3deg] w-[48rem] mb-12 xl:mb-4`}>
                                                 <div className="scale-[.75] sm:scale-[.9]">
                                                     <img src={Girls.src} alt={``} className="w-full" style={scale2} />
