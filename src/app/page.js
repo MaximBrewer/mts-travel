@@ -112,10 +112,10 @@ export default function Welcome(props) {
         setAnswers([])
         if (route) {
             setAnswers([]);
-            setCity(null)
+            smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
             setTimeout(() => {
-                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
-            }, 50)
+                setCity(null)
+            }, 200)
         }
     }, [route])
 
@@ -123,6 +123,8 @@ export default function Welcome(props) {
         setFindex(0)
         if (city && answers.length) {
             if (window.questions[city.code] && window.questions[city.code].length <= answers.length) {
+                smooth.current.scrollIntoView(resultsRef.current, { offsetTop: 124 });
+                setRoute(null)
                 setRoute(window.routes[city.code][answers[0]])
             }
         }
@@ -334,7 +336,7 @@ export default function Welcome(props) {
 
                                         <div className="animate-bounce flex relative z-10 items-center flex-col my-10 px-4 xl:px-8 max-w-lg xl:max-w-none mx-auto">
                                             <svg width="44" height="23" viewBox="0 0 44 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0.818359 0.503662L21.8601 21.5454L42.9018 0.503662" stroke="black" stroke-width="0.667992" />
+                                                <path d="M0.818359 0.503662L21.8601 21.5454L42.9018 0.503662" stroke="black" strokeWidth="0.667992" />
                                             </svg>
 
                                         </div>
