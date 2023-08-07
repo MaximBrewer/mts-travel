@@ -179,7 +179,7 @@ export default function Welcome(props) {
                             <div className={`w-screen overflow-hidden`} ref={pageRef}>
                                 <div className="relative">
                                     <div className={`bg-cover bg-top xl:h-screen max-h-[1600px] xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center pt-[72px] xl:pt-[102px]`} style={{ backgroundImage: `url('${Clouds.src}')` }}>
-                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start xl:justify-center relative py-10`}>
+                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start xl:justify-center relative pt-10`}>
                                             <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-4 xl:mb-[4vh] leading-none">
                                                 <Heart className="w-[58px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
                                                 <span>Приключения<br />включены</span>
@@ -187,7 +187,7 @@ export default function Welcome(props) {
                                             <img src={ImagesGroup.src} alt={``} className={`shrink-0 w-[16rem] sm:w-[346px] xs:w-auto mb-4 xl:mb-10`} />
                                             <div className="px-4 xl:px-0 text-center text-[24px] leading-tight font-medium max-w-lg xl:max-w-4xl">Отель, каршеринг, маршрут — все готово.<br />Не&nbsp;хватает только тебя.</div>
                                         </div>
-                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-12 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
+                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-4 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
                                             <button onClick={e => {
                                                 smooth.current.scrollIntoView(citiesRef.current, { block: "start", offsetTop: 84 });
                                             }} className={`w-[12rem] h-[3rem] xl:w-[20rem] xl:h-[4rem] relative pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1.125rem] xl:text-[1.5rem] text-white`}>го!</button>
