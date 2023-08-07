@@ -283,21 +283,21 @@ export default function Welcome(props) {
                                                                 text: `Сочи`,
                                                                 img: Sochi.src
                                                             },
-                                                            //{
-                                                            //     code: `kazan`,
-                                                            //     text: `Казань`,
-                                                            //     img: Kazan.src
-                                                            // }, 
+                                                            {
+                                                                code: `kazan`,
+                                                                text: `Казань`,
+                                                                img: Kazan.src
+                                                            },
                                                             {
                                                                 code: `spb`,
                                                                 text: `Санкт-Петербург`,
                                                                 img: Spb.src
                                                             },
-                                                            // {
-                                                            //     code: `kalinin`,
-                                                            //     text: `Калининград`,
-                                                            //     img: Kalin.src
-                                                            // }
+                                                            {
+                                                                code: `kalinin`,
+                                                                text: `Калининград`,
+                                                                img: Kalin.src
+                                                            }
                                                         ].map((item, index) => <div key={index} onClick={e => {
                                                             setCity(item)
                                                         }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
@@ -329,8 +329,8 @@ export default function Welcome(props) {
                                                                     <div className={`text-black xl:text-xl font-bold leading-tight`}>{item.title}</div>
                                                                 </div>
                                                                 <div className="flex mb-2">
-                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full border border-black relative top-1.5 mr-3 ">
-                                                                        <img src={item.icon} className="w-3 h-3 xl:w-5.5 xl:h-5.5" alt="" />
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full relative top-1.5 mr-3 ">
+                                                                        <img src={item.icon} className="w-full h-full" alt="" />
                                                                     </div>
                                                                     <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
                                                                 </div>
