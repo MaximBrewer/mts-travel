@@ -217,7 +217,7 @@ export default function Welcome(props) {
                                                     <img src={Photo6.src} alt={``} className="w-full" style={scale} />
                                                 </div>
                                                 <div className="container mx-auto relative z-10 text-right mt-72 pr-6 xl:mt-80">
-                                                    <div className="text-white font-medium text-shadow drop-shadow relative xl:-right-[2vw]">*Путешествия</div>
+                                                    {/* <div className="text-white font-medium text-shadow drop-shadow relative xl:-right-[2vw]">*Путешествия</div> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -311,7 +311,10 @@ export default function Welcome(props) {
                                     {route ? <div className="w-full relative z-40 mt-16 sm:mt-0" ref={resultsRef}>
                                         <div className="relative container mx-auto">
                                             <div className="max-w-lg xl:max-w-none mx-auto mb-8 xl:mb-20 px-4 xl:px-8">
-                                                <h4 className="relative z-10 text-center text-black text-xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-4">Предлагаем отправиться по&nbsp;маршруту &laquo;{route.title}&raquo;</h4>
+                                                <div className="relative z-10 text-center text-black text-xl xl:text-[36px] font-bold leading-tight mb-6 xl:max-w-4xl mx-auto pt-4">
+                                                    <div className="mb-2">Предлагаем отправиться<br /> по&nbsp;маршруту</div>
+                                                    <div>&laquo;{route.title}&raquo;</div>
+                                                </div>
                                                 <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{route.text}</div>
                                                 <div className="flex items-center flex-col">
                                                     <div className="relative py-[5rem] xl:py-[9.5rem] px-0 xl:px-4 flex flex-col items-center gap-[1.35rem] xl:gap-[3.65rem]">
@@ -322,14 +325,14 @@ export default function Welcome(props) {
                                                                 order: index % 2 ? 2 : 1,
                                                                 padding: index % 2 ? `0 0 0 6px` : `0 6px 0 0`,
                                                             }} >
-                                                                <div className="flex mb-2">
-                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative top-1.5 border-rose-600 mr-3">
-                                                                        <div className="text-center text-white text-sm xl:text-2xl font-light">{index + 1}</div>
+                                                                <div className="flex mb-2 items-center">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative border-rose-600 mr-3">
+                                                                        <div className="text-center text-white text-sm xl:text-xl font-light">{index + 1}</div>
                                                                     </div>
-                                                                    <div className={`text-black xl:text-xl font-bold leading-tight`}>{item.title}</div>
+                                                                    <div className={`text-black xl:text-xl font-bold leading-none xl:leading-none`}>{item.title}</div>
                                                                 </div>
                                                                 <div className="flex mb-2">
-                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full relative top-1.5 mr-3 ">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full relative mr-3 ">
                                                                         <img src={item.icon} className="w-full h-full" alt="" />
                                                                     </div>
                                                                     <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
@@ -349,9 +352,9 @@ export default function Welcome(props) {
                                                         </a>
                                                     </div>
                                                     <a href={route.link} target="_blank" className="mb-10">
-                                                        <div className="w-[318px] text-center text-black text-sm font-medium leading-snug">Скачать весь маршрут</div>
+                                                        <div className="w-[318px] text-center text-black text-xl font-medium leading-snug">Скачать весь маршрут</div>
                                                     </a>
-                                                    <div className="text-center text-black text-xl font-bold max-w-lg"> Этот маршрут создан специально для поездок на машине.  Выбирай отель, из которого удобно выезжать на каршеринге</div>
+                                                    <div className="text-center text-black text-xl max-w-lg"> Этот маршрут создан специально для поездок на машине.  Выбирай отель, из которого удобно выезжать на каршеринге.</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -436,7 +439,7 @@ export default function Welcome(props) {
                                             </button>
                                         </div>
                                         <div className="flex flex-col items-center pb-16 xl:pb-0 relative">
-                                            <div className="text-black opacity-50 font-medium text-shadow drop-shadow absolute bottom-6 right-6">*Путешествия</div>
+                                            {/* <div className="text-black opacity-50 font-medium text-shadow drop-shadow absolute bottom-6 right-6">*Путешествия</div> */}
                                             <div className={`flex items-center space-x-4 xl:space-x-10 mb-8`}>
                                                 <MtcLogo className="w-[163px] h-auto" />
                                                 <div className={`h-16 w-px border-l border-black`}></div>
