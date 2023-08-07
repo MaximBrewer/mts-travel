@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html lang="ru">
       <head>
         <Script
-          src="/data.js?н=5"
+          src="/data.js?v=1.0"
           strategy="beforeInteractive"
         />
       </head>
