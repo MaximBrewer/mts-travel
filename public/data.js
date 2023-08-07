@@ -2,33 +2,33 @@ window.questions = {
     sochi: [{
         question: `Как ты любишь отдыхать?`,
         answers: [
-            { img: `/routes/sochi/m0/image.jpg`, text: `Гулять в природных заповедниках`, routeIndex: 0 },
-            { img: `/routes/sochi/m1/image.jpg`, text: `Наслаждаться видами на горы`, routeIndex: 1 },
-            { img: `/routes/sochi/m2/image.jpg`, text: `Пробовать продукты с местных ферм`, routeIndex: 2 },
+            { img: `/routes/sochi/m0/image.jpg?y=1`, text: `Гулять в природных заповедниках`, routeIndex: 0 },
+            { img: `/routes/sochi/m1/image.jpg?y=1`, text: `Наслаждаться видами на горы`, routeIndex: 1 },
+            { img: `/routes/sochi/m2/image.jpg?y=1`, text: `Пробовать продукты с местных ферм`, routeIndex: 2 },
         ]
     }],
     spb: [{
         question: `Как ты любишь отдыхать?`,
         answers: [
-            { img: `/routes/spb/m0/image.jpg`, text: `Гулять у реки и наслаждаться видами`, routeIndex: 0 },
-            { img: `/routes/spb/m1/image.jpg`, text: `За городом на дачах`, routeIndex: 1 },
-            { img: `/routes/spb/m2/image.jpg`, text: `Знакомиться с культурой разных народов`, routeIndex: 2 },
+            { img: `/routes/spb/m0/image.jpg?y=1`, text: `Гулять у реки и наслаждаться видами`, routeIndex: 0 },
+            { img: `/routes/spb/m1/image.jpg?y=1`, text: `За городом на дачах`, routeIndex: 1 },
+            { img: `/routes/spb/m2/image.jpg?y=1`, text: `Знакомиться с культурой разных народов`, routeIndex: 2 },
         ]
     }],
     kalinin: [{
         question: `Как ты любишь отдыхать?`,
         answers: [
-            { img: `/routes/kalinin/m0/image.jpg`, text: `Уехать туда, где поменьше людей`, routeIndex: 0 },
-            { img: `/routes/kalinin/m1/image.jpg`, text: `Уйти от суеты и замедлиться`, routeIndex: 1 },
-            { img: `/routes/kalinin/m2/image.jpg`, text: `Путешествовать во времени`, routeIndex: 2 },
+            { img: `/routes/kalinin/m0/image.jpg?y=1`, text: `Уехать туда, где поменьше людей`, routeIndex: 0 },
+            { img: `/routes/kalinin/m1/image.jpg?y=1`, text: `Уйти от суеты и замедлиться`, routeIndex: 1 },
+            { img: `/routes/kalinin/m2/image.jpg?y=1`, text: `Путешествовать во времени`, routeIndex: 2 },
         ]
     }],
     kazan: [{
         question: `Как ты любишь отдыхать?`,
         answers: [
-            { img: `/routes/kalinin/m0/image.jpg`, text: `Погружаться в местный колорит`, routeIndex: 0 },
-            { img: `/routes/kalinin/m1/image.jpg`, text: `Находить диковинные места рядом`, routeIndex: 1 },
-            { img: `/routes/kalinin/m2/image.jpg`, text: `Прикасаться к истории`, routeIndex: 2 },
+            { img: `/routes/kazan/m0/image.jpg?y=1`, text: `Погружаться в местный колорит`, routeIndex: 0 },
+            { img: `/routes/kazan/m1/image.jpg?y=1`, text: `Находить диковинные места рядом`, routeIndex: 1 },
+            { img: `/routes/kazan/m2/image.jpg?y=1`, text: `Прикасаться к истории`, routeIndex: 2 },
         ]
     }]
 }
@@ -43,20 +43,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Мы нашли несколько отелей в центре Сочи, расположенных в шаговой доступности от главных достопримечательностей. Но главное, оттуда удобно начинать маршрут.`,
-                    icon: `/routes/sochi/m2/i0/icon.svg`,
-                    image: `/routes/sochi/m2/i0/image.jpg`
+                    icon: `/routes/sochi/m2/i0/icon.svg?y=1`,
+                    image: `/routes/sochi/m2/i0/image.jpg?y=1`
                 },
                 {
                     title: `Реликтовый лес`,
                     text: `Прогуляйтесь по сказочному лесу: папоротниково-лиановый пейзаж дополняют тропические грибы-цветы, скалы, разломы и бирюзово-синяя вода горной реки.`,
-                    icon: `/routes/sochi/m2/i1/icon.svg`,
-                    image: `/routes/sochi/m2/i1/image.jpg`
+                    icon: `/routes/sochi/m2/i1/icon.svg?y=1`,
+                    image: `/routes/sochi/m2/i1/image.jpg?y=1`
                 },
                 {
                     title: `Белый каньон`,
                     text: `Здесь вас ждет невероятное сочетание чистейшей голубой воды и белых скал — цвета просто фантастические. Не забудьте сделать классные фото на память.`,
-                    icon: `/routes/sochi/m2/i2/icon.svg`,
-                    image: `/routes/sochi/m2/i2/image.jpg`
+                    icon: `/routes/sochi/m2/i2/icon.svg?y=1`,
+                    image: `/routes/sochi/m2/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -68,20 +68,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Мы сделали подборку отелей в Адлере, где можно комфортно переночевать и начать путешествие на каршеринге.`,
-                    icon: `/routes/sochi/m1/i0/icon.svg`,
-                    image: `/routes/sochi/m1/i0/image.jpg`
+                    icon: `/routes/sochi/m1/i0/icon.svg?y=1`,
+                    image: `/routes/sochi/m1/i0/image.jpg?y=1`
                 },
                 {
                     title: `Аттракционы в ущелье`,
                     text: `Сюда едут не только за красивыми видами, но и за адреналином — место славится своими высотными аттракционами. Попробуйте прыгнуть в пропасть с банджи или прокатиться на огромных качелях через все ущелье.`,
-                    icon: `/routes/sochi/m1/i1/icon.svg`,
-                    image: `/routes/sochi/m1/i1/image.jpg`
+                    icon: `/routes/sochi/m1/i1/icon.svg?y=1`,
+                    image: `/routes/sochi/m1/i1/image.jpg?y=1`
                 },
                 {
                     title: `Водопад`,
                     text: `В маршруте будет несколько водопадов, один из них достигает 70 метров высоты. Отдельное удовольствие — сама прогулка к нему по горной извилистой дороге сквозь буковый лес.`,
-                    icon: `/routes/sochi/m1/i2/icon.svg`,
-                    image: `/routes/sochi/m1/i2/image.jpg`
+                    icon: `/routes/sochi/m1/i2/icon.svg?y=1`,
+                    image: `/routes/sochi/m1/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -93,20 +93,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Начните свое путешествие комфортно: мы подобрали несколько отелей, из которых удобно будет начать наш маршрут.`,
-                    icon: `/routes/sochi/m0/i0/icon.svg`,
-                    image: `/routes/sochi/m0/i0/image.jpg`
+                    icon: `/routes/sochi/m0/i0/icon.svg?y=1`,
+                    image: `/routes/sochi/m0/i0/image.jpg?y=1`
                 },
                 {
                     title: `Чайные плантации`,
                     text: `Насладитесь спокойным утром на зелёных чайных террасах , которые тянутся до самого горизонта и ничуть не уступают видами легендарному острову Цейлон.`,
-                    icon: `/routes/sochi/m0/i1/icon.svg`,
-                    image: `/routes/sochi/m0/i1/image.jpg`
+                    icon: `/routes/sochi/m0/i1/icon.svg?y=1`,
+                    image: `/routes/sochi/m0/i1/image.jpg?y=1`
                 },
                 {
                     title: `Обед на ферме`,
                     text: `На высоте 400 метров над уровнем моря вас ждет отличный фермерский обед из органических продуктов, выращенных здесь же.`,
-                    icon: `/routes/sochi/m0/i2/icon.svg`,
-                    image: `/routes/sochi/m0/i2/image.jpg`
+                    icon: `/routes/sochi/m0/i2/icon.svg?y=1`,
+                    image: `/routes/sochi/m0/i2/image.jpg?y=1`
                 }
             ]
 
@@ -121,20 +121,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Перед большим путешествием надо как следует отдохнуть. Поэтому мы нашли несколько отелей, где можно расслабиться. А еще оттуда удобно начинать маршрут.`,
-                    icon: `/routes/spb/m0/i0/icon.svg`,
-                    image: `/routes/spb/m0/i0/image.jpg`
+                    icon: `/routes/spb/m0/i0/icon.svg?y=1`,
+                    image: `/routes/spb/m0/i0/image.jpg?y=1`
                 },
                 {
                     title: `Стрелка двух рек`,
                     text: `Ты увидишь, как река Нева сливается с Ижорой, и темно-синяя вода приобретает более коричневый оттенок. Ну не волшебство ли?`,
-                    icon: `/routes/spb/m0/i1/icon.svg`,
-                    image: `/routes/spb/m0/i1/image.jpg`
+                    icon: `/routes/spb/m0/i1/icon.svg?y=1`,
+                    image: `/routes/spb/m0/i1/image.jpg?y=1`
                 },
                 {
                     title: `Ореховый остров`,
                     text: `На Ореховом острове вы увидите, как исторические события влияли на древнюю крепость и оставляли следы. Например, там до сих пор есть вмятины от пуль и снарядов.`,
-                    icon: `/routes/spb/m0/i2/icon.svg`,
-                    image: `/routes/spb/m0/i2/image.jpg`
+                    icon: `/routes/spb/m0/i2/icon.svg?y=1`,
+                    image: `/routes/spb/m0/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -146,20 +146,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Мы подготовили отели, расположенные близко к выезду в сторону Гатчины, чтобы путешествие началось без пробок.`,
-                    icon: `/routes/spb/m1/i0/icon.svg`,
-                    image: `/routes/spb/m1/i0/image.jpg`
+                    icon: `/routes/spb/m1/i0/icon.svg?y=1`,
+                    image: `/routes/spb/m1/i0/image.jpg?y=1`
                 },
                 {
                     title: `Кусочек Голландии`,
                     text: `Даже в русской провинции можно встретить концептуальную городскую архитектуру. Дом «Амстердам» в поселке Сиверский прямое тому доказательство.`,
-                    icon: `/routes/spb/m1/i1/icon.svg`,
-                    image: `/routes/spb/m1/i1/image.jpg`
+                    icon: `/routes/spb/m1/i1/icon.svg?y=1`,
+                    image: `/routes/spb/m1/i1/image.jpg?y=1`
                 },
                 {
                     title: `Усадьба писателя`,
                     text: `Деревня Пустынька, где жил и работал граф Толстой. Здесь же можно увидеть графский грот и посетить «литературную» туристическую тропу.`,
-                    icon: `/routes/spb/m1/i2/icon.svg`,
-                    image: `/routes/spb/m1/i2/image.jpg`
+                    icon: `/routes/spb/m1/i2/icon.svg?y=1`,
+                    image: `/routes/spb/m1/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -171,20 +171,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Мы нашли места, где будет удобно переночевать перед большим путешествием, а с утра — позавтракать и удобно выехать. Никаких пробок по Мурманскому шоссе.`,
-                    icon: `/routes/spb/m2/i0/icon.svg`,
-                    image: `/routes/spb/m2/i0/image.jpg`
+                    icon: `/routes/spb/m2/i0/icon.svg?y=1`,
+                    image: `/routes/spb/m2/i0/image.jpg?y=1`
                 },
                 {
                     title: `Маяки-близнецы`,
                     text: `Панорама на извилистую реку возле чугунного Белого маяка. Со смотровой площадки виден и его «близнец» — Красный маяк. Отличное место для кинематографичных фото.`,
-                    icon: `/routes/spb/m2/i1/icon.svg`,
-                    image: `/routes/spb/m2/i1/image.jpg`
+                    icon: `/routes/spb/m2/i1/icon.svg?y=1`,
+                    image: `/routes/spb/m2/i1/image.jpg?y=1`
                 },
                 {
                     title: `Заброшенная ж/д`,
                     text: `Место, где в суровых скалах был пробурен живописный железнодорожный тоннель. Самое время посмотреть, пока здесь не пустили скоростные поезда!`,
-                    icon: `/routes/spb/m2/i2/icon.svg`,
-                    image: `/routes/spb/m2/i2/image.jpg`
+                    icon: `/routes/spb/m2/i2/icon.svg?y=1`,
+                    image: `/routes/spb/m2/i2/image.jpg?y=1`
                 }
             ]
         }
@@ -198,20 +198,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Уютные отели в самом сердце города — комфортно ночевать и начинать маршрут.`,
-                    icon: `/routes/kalinin/m0/i0/icon.svg`,
-                    image: `/routes/kalinin/m0/i0/image.jpg`
+                    icon: `/routes/kalinin/m0/i0/icon.svg?y=1`,
+                    image: `/routes/kalinin/m0/i0/image.jpg?y=1`
                 },
                 {
                     title: `Куршская коса`,
                     text: `Нашли места на косе, о которых знают не все туристы и даже местные. Отличные локации для уединения.`,
-                    icon: `/routes/kalinin/m0/i1/icon.svg`,
-                    image: `/routes/kalinin/m0/i1/image.jpg`
+                    icon: `/routes/kalinin/m0/i1/icon.svg?y=1`,
+                    image: `/routes/kalinin/m0/i1/image.jpg?y=1`
                 },
                 {
                     title: `Тевтонский замок`,
                     text: `Шаакен — настоящий портал в прошлое. Здесь можно пройти тест на ведьму, посетить пыточную, а еще попробовать домашние сыры и шоколад.`,
-                    icon: `/routes/kalinin/m0/i2/icon.svg`,
-                    image: `/routes/kalinin/m0/i2/image.jpg`
+                    icon: `/routes/kalinin/m0/i2/icon.svg?y=1`,
+                    image: `/routes/kalinin/m0/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -223,20 +223,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Нашли отели, чтобы красивые виды были не только из окна каршеринга, но и из спальни.`,
-                    icon: `/routes/kalinin/m1/i0/icon.svg`,
-                    image: `/routes/kalinin/m1/i0/image.jpg`
+                    icon: `/routes/kalinin/m1/i0/icon.svg?y=1`,
+                    image: `/routes/kalinin/m1/i0/image.jpg?y=1`
                 },
                 {
                     title: `Экоферма`,
                     text: `Семейная ферма, где можно попробовать домашние сыры, погладить альпийских козочек и вдоволь надышаться свежим воздухом. `,
-                    icon: `/routes/kalinin/m1/i1/icon.svg`,
-                    image: `/routes/kalinin/m1/i1/image.jpg`
+                    icon: `/routes/kalinin/m1/i1/icon.svg?y=1`,
+                    image: `/routes/kalinin/m1/i1/image.jpg?y=1`
                 },
                 {
                     title: `Светлогорск`,
                     text: `Один из самых медленных городов мира, в котором уютные домики в стиле фахверк утопают в соснах и аромате соленого моря.`,
-                    icon: `/routes/kalinin/m1/i2/icon.svg`,
-                    image: `/routes/kalinin/m1/i2/image.jpg`
+                    icon: `/routes/kalinin/m1/i2/icon.svg?y=1`,
+                    image: `/routes/kalinin/m1/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -248,20 +248,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Погрузиться в другую эпоху можно сразу же в отеле. Мы подобрали варианты интерьерных отелей, откуда удобнее всего начинать маршрут.`,
-                    icon: `/routes/kalinin/m2/i0/icon.svg`,
-                    image: `/routes/kalinin/m2/i0/image.jpg`
+                    icon: `/routes/kalinin/m2/i0/icon.svg?y=1`,
+                    image: `/routes/kalinin/m2/i0/image.jpg?y=1`
                 },
                 {
                     title: `Порт`,
                     text: `Начните день в городском порту: корабли, соленый запах моря и аромат местного кофе — что еще нужно для идеального утра?`,
-                    icon: `/routes/kalinin/m2/i1/icon.svg`,
-                    image: `/routes/kalinin/m2/i1/image.jpg`
+                    icon: `/routes/kalinin/m2/i1/icon.svg?y=1`,
+                    image: `/routes/kalinin/m2/i1/image.jpg?y=1`
                 },
                 {
                     title: `Форт 11 Денхофф`,
                     text: `Самый сохранившийся из фортов Калининграда, в котором до сих пор можно посмотреть устройство боевой крепости.`,
-                    icon: `/routes/kalinin/m2/i2/icon.svg`,
-                    image: `/routes/kalinin/m2/i2/image.jpg`
+                    icon: `/routes/kalinin/m2/i2/icon.svg?y=1`,
+                    image: `/routes/kalinin/m2/i2/image.jpg?y=1`
                 }
             ]
         }
@@ -275,20 +275,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Мы нашли отели, расположенные в самом сердце Казани. Отсюда можно легко добраться до самых главных мест, особенно если взять каршеринг.`,
-                    icon: `/routes/kazan/m0/i0/icon.svg`,
-                    image: `/routes/kazan/m0/i0/image.jpg`
+                    icon: `/routes/kazan/m0/i0/icon.svg?y=1`,
+                    image: `/routes/kazan/m0/i0/image.jpg?y=1`
                 },
                 {
                     title: `Туган Авылым`,
                     text: `Аутентичная деревня в самом центре современного города. Здесь можно посмотреть на традиционный быт казанских татар и попробовать местную кухню.`,
-                    icon: `/routes/kazan/m0/i1/icon.svg`,
-                    image: `/routes/kazan/m0/i1/image.jpg`
+                    icon: `/routes/kazan/m0/i1/icon.svg?y=1`,
+                    image: `/routes/kazan/m0/i1/image.jpg?y=1`
                 },
                 {
                     title: `Кул Шариф`,
                     text: `Главная мечеть Казани, включенная в список всемирного наследия ЮНЕСКО, поразит масштабом и красотой. Нет фотки на ее фоне — считай, не был в столице Татарстана.`,
-                    icon: `/routes/kazan/m0/i2/icon.svg`,
-                    image: `/routes/kazan/m0/i2/image.jpg`
+                    icon: `/routes/kazan/m0/i2/icon.svg?y=1`,
+                    image: `/routes/kazan/m0/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -300,20 +300,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Нашли отели, которые подойдут и ценителям комфорта, и тем, кто любит местный колорит. А еще у каждого из отелей удобно взять каршеринг и отправиться в путешествие.`,
-                    icon: `/routes/kazan/m1/i0/icon.svg`,
-                    image: `/routes/kazan/m1/i0/image.jpg`
+                    icon: `/routes/kazan/m1/i0/icon.svg?y=1`,
+                    image: `/routes/kazan/m1/i0/image.jpg?y=1`
                 },
                 {
                     title: `Раифский монастырь`,
                     text: `Место понравится не только верующим, ведь монастырь расположен на территории заповедника — можно отдохнуть и отвлечься от суеты.`,
-                    icon: `/routes/kazan/m1/i1/icon.svg`,
-                    image: `/routes/kazan/m1/i1/image.jpg`
+                    icon: `/routes/kazan/m1/i1/icon.svg?y=1`,
+                    image: `/routes/kazan/m1/i1/image.jpg?y=1`
                 },
                 {
                     title: `Каньоны`,
                     text: `Красные скалы каньона в Кукморе — наш ответ Гранд Каньону. Эффектные фото на фоне «марсианского» рельефа вам гарантированы.`,
-                    icon: `/routes/kazan/m1/i2/icon.svg`,
-                    image: `/routes/kazan/m1/i2/image.jpg`
+                    icon: `/routes/kazan/m1/i2/icon.svg?y=1`,
+                    image: `/routes/kazan/m1/i2/image.jpg?y=1`
                 }
             ]
         },
@@ -325,20 +325,20 @@ window.routes = {
                 {
                     title: `Отель`,
                     text: `Погружение в историю начнем из современного отеля. Выбрали варианты, где можно комфортно провести время и набраться сил перед путешествием.`,
-                    icon: `/routes/kazan/m2/i0/icon.svg`,
-                    image: `/routes/kazan/m2/i0/image.jpg`
+                    icon: `/routes/kazan/m2/i0/icon.svg?y=1`,
+                    image: `/routes/kazan/m2/i0/image.jpg?y=1`
                 },
                 {
                     title: `Город-остров`,
                     text: `Свияжск вырос на берегу Волги всего за один месяц по приказу Ивана Грозного. Именно здесь царь организовал опорную базу для взятия Казани.`,
-                    icon: `/routes/kazan/m2/i1/icon.svg`,
-                    image: `/routes/kazan/m2/i1/image.jpg`
+                    icon: `/routes/kazan/m2/i1/icon.svg?y=1`,
+                    image: `/routes/kazan/m2/i1/image.jpg?y=1`
                 },
                 {
                     title: `Волжская Булгария`,
                     text: `Болгар — один из древнейших городов Татарстана. Здесь можно увидеть развалины времен Золотой Орды, руническую письменность и необычную архитектуру храмов.`,
-                    icon: `/routes/kazan/m2/i2/icon.svg`,
-                    image: `/routes/kazan/m2/i2/image.jpg`
+                    icon: `/routes/kazan/m2/i2/icon.svg?y=1`,
+                    image: `/routes/kazan/m2/i2/image.jpg?y=1`
                 }
             ]
         }
