@@ -38,15 +38,15 @@ import { useEffect, useRef, useState } from 'react';
 const intro = [
     {
         title: `4&nbsp;города`,
-        text: `Ждем тебя в Сочи, Санкт-Петербурге, Казани, Калининграде и их окрестностях.`
+        text: `Ждем тебя в&nbsp;Сочи, <span class="whitespace-nowrap">Санкт-Петербурге</span>, Казани, Калининграде и&nbsp;их&nbsp;окрестностях.`
     },
     {
         title: `12&nbsp;маршрутов`,
-        text: `Устанавливай фильтр и получай маршрут, который подходит тебе больше всего. Подняться к водопаду? Понежиться в спа? А, может, дегустировать сыры? Легко.`
+        text: `Устанавливай фильтр и&nbsp;получай маршрут, который подходит тебе больше всего. Подняться к&nbsp;водопаду? Понежиться в&nbsp;спа? А, может, дегустировать сыры? Легко.`
     },
     {
         title: `<span className="whitespace-nowrap">Много-много</span><br />впечатлений`,
-        text: `Успей увидеть больше на каршеринге. Получи маршрут бесплатно от МТС Travel и промокод на 500 рублей от BelkaCar.`
+        text: `Успей увидеть больше на&nbsp;каршеринге. Получи маршрут бесплатно от&nbsp;МТС Travel и&nbsp;промокод на&nbsp;500 рублей от&nbsp;BelkaCar.`
     },
 ];
 
@@ -56,7 +56,7 @@ const Filter = (props) => {
 
     return window.questions[city.code][findex] ? <div className="container mx-auto">
         <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
-            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{window.questions[city.code][findex].question}</h4>
+            <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{parse(window.questions[city.code][findex].question ?? ``)}</h4>
             <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-3 xl:gap-y-8">
                 {window.questions[city.code][findex].answers.map((item, idx) => <div key={idx} onClick={e => {
                     setAnswers(prev => {
@@ -66,7 +66,7 @@ const Filter = (props) => {
                     })
                     setFindex(prev => ++prev)
                 }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[104px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
-                    <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
+                    <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{parse(item.text ?? ``)}</div>
                 </div>)}
             </div>
         </div>
@@ -84,6 +84,7 @@ export default function Welcome(props) {
     })
 
     const [city, setCity] = useState(null);
+    const [cityCode, setCityCode] = useState(`sochi`);
 
     const [answers, setAnswers] = useState([]);
 
@@ -138,6 +139,7 @@ export default function Welcome(props) {
     useEffect(() => {
         setFindex(0)
         if (city && answers.length) {
+            setCityCode(city.code);
             if (window.questions[city.code] && window.questions[city.code].length <= answers.length) {
                 smooth.current.scrollIntoView(resultsRef.current, { offsetTop: headerRef.current.offsetHeight });
                 setRoute(null)
@@ -156,9 +158,9 @@ export default function Welcome(props) {
             <div className="bg-indigo-300 bg-cover bg-top">
                 <div className={`h-screen w-screen overflow-hidden`}>
                     <div className="w-full fixed w-full top-0 z-50" ref={headerRef}>
-                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-5 xl:py-6`}>
+                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-3 xl:py-6`}>
                             <a href="/pdf/rules.pdf" target="_blank" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
-                            <div className={`flex items-center space-x-8 xl:space-x-10`}>
+                            <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
                                 <MtcLogo className="w-[120px] xl:w-[174px] h-auto" />
                                 <div className={`h-9 xl:h-12 w-px border-l border-black`}></div>
                                 <BelkaCarLogo className="w-[102px] xl:w-[148px] h-auto" />
@@ -234,26 +236,26 @@ export default function Welcome(props) {
                                                 <div className="z-20 bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-2 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
                                                     <img src={LR1.src} className="absolute max-w-none pointer-events-none top-[1.52rem] -right-px xl:hidden" />
                                                     <img src={LL1.src} className="absolute max-w-none pointer-events-none -bottom-px -left-px xl:hidden" />
-                                                    <div className="relative flex flex-col pt-12 items-center">
-                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[-169.04deg] absolute w-6 h-auto xl:w-10 right-6 -top-8 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[2.58deg] px-8`}>{parse(intro[0].title)}</div>
+                                                    <div className="relative flex flex-col pt-12 items-start px-16 xl:px-0">
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-2 xl:mb-6 xl:py-3 xl:px-4 xl:-mx-4">
+                                                            <Pin className={`rotate-[-169.04deg] absolute w-6 h-auto xl:w-10 right-0 -top-8 xl:-top-14 z-10`} />
+                                                            <div className={`text-center rotate-[2.58deg] px-2 xl:px-0`}>{parse(intro[0].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-xs xl:text-sm font-medium max-w-[16rem]">{parse(intro[0].text)}</div>
+                                                        <div className="text-stone-900 text-xs xl:text-sm font-medium max-w-[16rem] pl-5 xl:pl-0">{parse(intro[0].text)}</div>
                                                     </div>
-                                                    <div className="relative flex flex-col pt-12 items-center xl:ml-12">
-                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[1.80deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[161.36deg] absolute right-20 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[-1.80deg] px-8`}>{parse(intro[1].title)}</div>
+                                                    <div className="relative flex flex-col pt-12 items-start xl:ml-12">
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[1.80deg] bg-white py-2 px-3 mb-2 xl:mb-6 xl:py-3 xl:px-4 xl:-mx-4">
+                                                            <Pin className={`rotate-[161.36deg] absolute left-0 xl:left-auto xl:right-20 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
+                                                            <div className={`text-center rotate-[-1.80deg] px-2 xl:px-0`}>{parse(intro[1].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-start">{parse(intro[1].text)}</div>
+                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] pl-6 xl:pl-0 xs:max-w-xxs sm:max-w-xs self-start xl:pr-8">{parse(intro[1].text)}</div>
                                                     </div>
-                                                    <div className="relative flex flex-col pt-12 items-center xl:ml-12">
-                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.30deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[176.36deg] absolute right-16 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
-                                                            <div className={`text-center rotate-[2.30deg] px-8`}>{parse(intro[2].title)}</div>
+                                                    <div className="relative flex flex-col pt-12 items-center xl:items-start xl:ml-12">
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.30deg] bg-white py-2 px-3 mb-2 xl:mb-6 xl:py-3 xl:px-4 xl:-mx-4">
+                                                            <Pin className={`-rotate-[170.36deg] absolute right-0 xl:right-4 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
+                                                            <div className={`text-center rotate-[2.30deg] px-2 xl:px-0 leading-none`}>{parse(intro[2].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end">{parse(intro[2].text)}</div>
+                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end xl:pr-12">{parse(intro[2].text)}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -301,7 +303,7 @@ export default function Welcome(props) {
                                                         ].map((item, index) => <div key={index} onClick={e => {
                                                             setCity(item)
                                                         }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[104px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
-                                                            <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
+                                                            <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{parse(item.text ?? ``)}</div>
                                                         </div>)}
                                                     </div>
                                                 </div>
@@ -315,30 +317,30 @@ export default function Welcome(props) {
                                                     <div className="mb-2">Предлагаем отправиться<br /> по&nbsp;маршруту</div>
                                                     <div>&laquo;{route.title}&raquo;</div>
                                                 </div>
-                                                <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{route.text}</div>
+                                                <div className="relative z-10 xl:max-w-2xl mx-auto text-center text-stone-900 text-sm mb-8 font-medium leading-relaxed">{parse(route.text ?? ``)}</div>
                                                 <div className="flex items-center flex-col">
-                                                    <div className="relative py-[5rem] xl:py-[9.5rem] px-0 xl:px-4 flex flex-col items-center gap-[1.35rem] xl:gap-[3.65rem]">
+                                                    <div className="relative py-[5.175rem] xl:py-[9.5rem] px-0 xl:px-4 flex flex-col items-center gap-[1.7rem] xl:gap-[3.65rem]">
                                                         <img src={RoadNew.src} alt="" className="absolute top-0 max-w-none pointer-events-none hidden xl:block" />
                                                         <img src={RoadNewMob.src} alt="" className="absolute top-0 max-w-none pointer-events-none xl:hidden" />
-                                                        {route.items.map((item, index) => <div key={index} className="bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[130px] xl:h-[210px] w-[310px] xl:w-[642px] p-2 xl:p-5">
+                                                        {route.items.map((item, index) => <div key={index} className="bg-white rounded-[24px] xl:rounded-[29.33px] border border-black flex mx-auto h-[124px] xl:h-[210px] w-[310px] xl:w-[642px] p-3 xl:p-5">
                                                             <div className="w-3/5 xl:w-1/2" style={{
                                                                 order: index % 2 ? 2 : 1,
                                                                 padding: index % 2 ? `0 0 0 6px` : `0 6px 0 0`,
                                                             }} >
-                                                                <div className="flex mb-2 items-center">
-                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative border-rose-600 mr-3">
-                                                                        <div className="text-center text-white text-sm xl:text-xl font-light">{index + 1}</div>
+                                                                <div className="flex mb-1.5 xl:mb-2 items-center">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center bg-rose-600 rounded-full border relative border-rose-600 mr-2 xl:mr-3">
+                                                                        <div className="text-center text-white text-xs xl:text-xl font-light leading-none relative top-[.5px]">{index + 1}</div>
                                                                     </div>
-                                                                    <div className={`text-black xl:text-xl font-bold leading-none xl:leading-none`}>{item.title}</div>
+                                                                    <div className={`text-black xl:text-xl font-bold leading-none xl:leading-none`}>{parse(item.title ?? ``)}</div>
                                                                 </div>
-                                                                <div className="flex mb-2">
-                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full relative mr-3 ">
+                                                                <div className="flex">
+                                                                    <div className="shrink-0 w-5 h-5 xl:w-10 xl:h-10 flex items-center justify-center rounded-full relative mr-2 xl:mr-3">
                                                                         <img src={item.icon} className="w-full h-full" alt="" />
                                                                     </div>
-                                                                    <div className="text-black text-xs xl:min-h-[4rem] line-clamp-4 xl:line-clamp-6">{item.text}</div>
+                                                                    <div className="text-black text-[8px] xl:text-[13px] xl:min-h-[4rem] line-clamp-7 xl:line-clamp-7 leading-tight xl:leading-tight">{parse(item.text ?? ``)}</div>
                                                                 </div>
                                                             </div>
-                                                            <div className="w-2/5 xl:w-1/2 h-[100px] xl:h-full rounded-2xl bg-cover bg-center shrink-0" style={{
+                                                            <div className="w-2/5 xl:w-1/2 h-[100px] xl:h-full rounded-[10px] bg-cover bg-center shrink-0" style={{
                                                                 backgroundImage: `url('${item.image}')`,
                                                                 order: index % 2 ? 1 : 2
                                                             }} />
@@ -411,7 +413,7 @@ export default function Welcome(props) {
                                                             </svg>
                                                         </div>
                                                         <div className="relative text-center text-stone-900 text-[18px] sm:text-[36px] font-bold mb-8 max-w-3xl mx-auto">Бронируй отель, получай промокод на&nbsp;BelkaCar и путешествуй выгодно</div>
-                                                        <a target='_blank' href="https://travel.mts.ru/?utm_source=inhouse&utm_medium=special&utm_campaign=belkacar&utm_content=landing" className={`relative px-6 sm:w-[24rem] h-[3rem] xl:h-[4rem] pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1rem] sm:text-2xl text-white`}>Забронировать</a>
+                                                        <a target='_blank' href={window.btns[cityCode]} className={`relative px-6 sm:w-[24rem] h-[3rem] xl:h-[4rem] pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1rem] sm:text-2xl text-white`}>Забронировать</a>
                                                     </div>
 
                                                 </div>
@@ -440,12 +442,12 @@ export default function Welcome(props) {
                                         </div>
                                         <div className="flex flex-col items-center pb-16 xl:pb-0 relative">
                                             {/* <div className="text-black opacity-50 font-medium text-shadow drop-shadow absolute bottom-6 right-6">*Путешествия</div> */}
-                                            <div className={`flex items-center space-x-4 xl:space-x-10 mb-8`}>
+                                            <div className={`items-center space-x-4 xl:space-x-10 mb-8 xl:mb-16 hidden xl:flexa`}>
                                                 <MtcLogo className="w-[163px] h-auto" />
                                                 <div className={`h-16 w-px border-l border-black`}></div>
                                                 <BelkaCarLogo className="w-[142px] h-auto" />
                                             </div>
-                                            <a href="/pdf/rules.pdf" target="_blank" className="text-stone-900 text-sm font-normal underline mb-8">Правила</a>
+                                            <a href="/pdf/rules.pdf" target="_blank" className="text-stone-900 text-sm font-normal underline mb-8 xl:hidden">Правила</a>
                                         </div>
                                     </div> : ``}
                                 </div>
