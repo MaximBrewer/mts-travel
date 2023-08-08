@@ -57,7 +57,7 @@ const Filter = (props) => {
     return window.questions[city.code][findex] ? <div className="container mx-auto">
         <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
             <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">{window.questions[city.code][findex].question}</h4>
-            <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
+            <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-3 xl:gap-y-8">
                 {window.questions[city.code][findex].answers.map((item, idx) => <div key={idx} onClick={e => {
                     setAnswers(prev => {
                         let arr = prev.slice()
@@ -65,8 +65,8 @@ const Filter = (props) => {
                         return arr
                     })
                     setFindex(prev => ++prev)
-                }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
-                    <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
+                }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[104px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                    <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
                 </div>)}
             </div>
         </div>
@@ -156,12 +156,12 @@ export default function Welcome(props) {
             <div className="bg-indigo-300 bg-cover bg-top">
                 <div className={`h-screen w-screen overflow-hidden`}>
                     <div className="w-full fixed w-full top-0 z-50" ref={headerRef}>
-                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-3 xl:py-6`}>
+                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start relative py-5 xl:py-6`}>
                             <a href="/pdf/rules.pdf" target="_blank" className="absolute right-8 top-6 text-stone-900 text-sm hidden xl:block">Правила</a>
-                            <div className={`flex items-center space-x-2 sm:space-x-6 xl:space-x-10`}>
-                                <MtcLogo className="w-[136px] xl:w-[174px] h-auto" />
-                                <div className={`h-12 w-px border-l border-black`}></div>
-                                <BelkaCarLogo className="w-[112px] xl:w-[148px] h-auto" />
+                            <div className={`flex items-center space-x-8 xl:space-x-10`}>
+                                <MtcLogo className="w-[120px] xl:w-[174px] h-auto" />
+                                <div className={`h-9 xl:h-12 w-px border-l border-black`}></div>
+                                <BelkaCarLogo className="w-[102px] xl:w-[148px] h-auto" />
                             </div>
                         </div>
                     </div>
@@ -179,15 +179,15 @@ export default function Welcome(props) {
                             <div className={`w-screen overflow-hidden`} ref={pageRef}>
                                 <div className="relative">
                                     <div className={`bg-cover bg-top xl:h-screen max-h-[1600px] xl:min-h-[680px] xl:flex xl:flex-col xl:justify-between xl:items-center pt-[72px] xl:pt-[102px]`} style={{ backgroundImage: `url('${Clouds.src}')` }}>
-                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start xl:justify-center relative pt-10`}>
-                                            <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-4 xl:mb-[4vh] leading-none">
-                                                <Heart className="w-[58px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
+                                        <div className={`xl:grow container mx-auto  flex flex-col items-center justify-start xl:justify-center relative pt-16 xl:pt-10`}>
+                                            <div className="text-[24px] sm:text-[36px] xl:text-[46px] font-bold uppercase flex items-center space-x-3 xl:space-x-8 mb-12 xl:mb-[4vh] leading-none">
+                                                <Heart className="w-[72px] sm:w-[84px] xl:w-[130px] h-auto -my-8" />
                                                 <span>Приключения<br />включены</span>
                                             </div>
-                                            <img src={ImagesGroup.src} alt={``} className={`shrink-0 w-[16rem] sm:w-[346px] xs:w-auto mb-4 xl:mb-10`} />
-                                            <div className="px-4 xl:px-0 text-center text-[24px] leading-tight font-medium max-w-lg xl:max-w-4xl">Отель, каршеринг, маршрут — все готово.<br />Не&nbsp;хватает только тебя.</div>
+                                            <img src={ImagesGroup.src} alt={``} className={`shrink-0 w-[16rem] sm:w-[346px] xs:w-auto mb-8 xl:mb-10`} />
+                                            <div className="px-4 xl:px-0 text-center text-lg xl:text-[24px] leading-tight xl:leading-tight font-medium max-w-lg xl:max-w-4xl">Отель, каршеринг, маршрут — все готово.<br />Не&nbsp;хватает только тебя.</div>
                                         </div>
-                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-4 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
+                                        <div className={`xl:w-full z-10 relative shrink-0 overflow-hidden pt-12 xl:pt-4 pointer-events-none max-w-lg xl:max-w-[1920px] mx-auto flex flex-col items-center`}>
                                             <button onClick={e => {
                                                 smooth.current.scrollIntoView(citiesRef.current, { block: "start", offsetTop: 84 });
                                             }} className={`w-[12rem] h-[3rem] xl:w-[20rem] xl:h-[4rem] relative pointer-events-auto flex items-center justify-center mx-auto rounded-full bg-rose-600 hover:bg-rose-800 transition font-medium text-[1.125rem] xl:text-[1.5rem] text-white`}>го!</button>
@@ -231,29 +231,29 @@ export default function Welcome(props) {
                                                     <img src={Roadm2.src} className="absolute max-w-none -bottom-[0.1rem] -left-[16.5rem] xl:hidden" />
                                                     <img src={Roadm3.src} className="absolute max-w-none -rotate-[10deg] -bottom-[56rem] left-[1.1rem] xl:hidden" />
                                                 </div>
-                                                <div className="z-20 bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-6 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
+                                                <div className="z-20 bg-yellow-200 rounded-[26px] flex flex-col xl:flex-row px-8 xl:px-16 xl:px-24 pt-2 pb-10 xl:py-16 relative justify-between -mt-32 xl:-mt-12">
                                                     <img src={LR1.src} className="absolute max-w-none pointer-events-none top-[1.52rem] -right-px xl:hidden" />
                                                     <img src={LL1.src} className="absolute max-w-none pointer-events-none -bottom-px -left-px xl:hidden" />
                                                     <div className="relative flex flex-col pt-12 items-center">
-                                                        <div className="text-stone-900 text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[-169.04deg] absolute w-8 h-auto xl:w-10 right-6 -top-11 xl:-top-14 z-10`} />
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.58deg] bg-white py-2 px-3 mb-6">
+                                                            <Pin className={`rotate-[-169.04deg] absolute w-6 h-auto xl:w-10 right-6 -top-8 xl:-top-14 z-10`} />
                                                             <div className={`text-center rotate-[2.58deg] px-8`}>{parse(intro[0].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[16rem]">{parse(intro[0].text)}</div>
+                                                        <div className="text-stone-900 text-xs xl:text-sm font-medium max-w-[16rem]">{parse(intro[0].text)}</div>
                                                     </div>
                                                     <div className="relative flex flex-col pt-12 items-center xl:ml-12">
-                                                        <div className="text-stone-900 text-2xl font-bold rotate-[1.80deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[161.36deg] absolute right-20 w-8 h-auto xl:w-10 -top-11 xl:-top-14 z-10`} />
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[1.80deg] bg-white py-2 px-3 mb-6">
+                                                            <Pin className={`rotate-[161.36deg] absolute right-20 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
                                                             <div className={`text-center rotate-[-1.80deg] px-8`}>{parse(intro[1].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-start">{parse(intro[1].text)}</div>
+                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-start">{parse(intro[1].text)}</div>
                                                     </div>
                                                     <div className="relative flex flex-col pt-12 items-center xl:ml-12">
-                                                        <div className="text-stone-900 text-2xl font-bold rotate-[-2.30deg] bg-white py-2 px-3 mb-6">
-                                                            <Pin className={`rotate-[176.36deg] absolute right-16 w-8 h-auto xl:w-10 -top-11 xl:-top-14 z-10`} />
+                                                        <div className="text-stone-900 text-xl xl:text-2xl font-bold rotate-[-2.30deg] bg-white py-2 px-3 mb-6">
+                                                            <Pin className={`rotate-[176.36deg] absolute right-16 w-6 h-auto xl:w-10 -top-8 xl:-top-14 z-10`} />
                                                             <div className={`text-center rotate-[2.30deg] px-8`}>{parse(intro[2].title)}</div>
                                                         </div>
-                                                        <div className="text-stone-900 text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end">{parse(intro[2].text)}</div>
+                                                        <div className="text-stone-900  text-xs xl:text-sm font-medium max-w-[220px] xs:max-w-xxs sm:max-w-xs self-end">{parse(intro[2].text)}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,7 +261,7 @@ export default function Welcome(props) {
                                     </div>
                                     <div className="w-full relative z-50 mt-16 sm:mt-0" ref={citiesRef}>
                                         <div className="flex flex-col items-center my-8">
-                                            <div className="text-center text-black text-xl font-medium mb-2 xl:mb-6">Подобрать маршрут</div>
+                                            <div className="text-center text-black xl:text-xl font-bold xl:font-medium mb-2 xl:mb-6">Подобрать маршрут</div>
                                             <div className="cursor-pointer block hover:scale-125 transition duration-500 mt-6 animate-bounce">
                                                 <svg className="w-6 xl:w-8 h-auto" viewBox="0 0 48 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M1 1L24 20L47 1" stroke="black" />
@@ -274,8 +274,8 @@ export default function Welcome(props) {
                                             </div>
                                             {!city ? <div className="container mx-auto relative z-10">
                                                 <div className="bg-white rounded-[26px] px-4 xl:px-24 py-8 xl:py-12 xl:py-16 relative">
-                                                    <h4 className="text-center text-black text-2xl xl:text-[36px] font-bold leading-tight mb-6">В каком городе <br />ты хочешь исследовать новые места?</h4>
-                                                    <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-8">
+                                                    <h4 className="text-center text-black text-xl xl:text-[36px] font-bold leading-tight mb-6">В каком городе <br />ты хочешь исследовать новые места?</h4>
+                                                    <div className="flex flex-col xl:flex-row xl:flex-wrap xl:justify-center gap-x-5 gap-y-3 xl:gap-y-8">
                                                         {[
                                                             {
 
@@ -300,8 +300,8 @@ export default function Welcome(props) {
                                                             }
                                                         ].map((item, index) => <div key={index} onClick={e => {
                                                             setCity(item)
-                                                        }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[180px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
-                                                            <div className="z-20 relative text-center text-black text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
+                                                        }} className="cursor-pointer xl:w-[calc(50%-10px)] h-[104px] xl:h-[119px] bg-cover bg-center flex items-center justify-center rounded-xl group px-8" style={{ backgroundImage: `url('${item.img}')` }}>
+                                                            <div className="z-20 relative text-center text-black text-xs xl:text-sm font-medium px-8 group-hover:scale-[102%] duration-500 transition py-3 bg-white rounded-full">{item.text}</div>
                                                         </div>)}
                                                     </div>
                                                 </div>
